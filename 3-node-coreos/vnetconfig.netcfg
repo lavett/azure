@@ -3,13 +3,12 @@
   <VirtualNetworkConfiguration>
     <Dns />
     <VirtualNetworkSites>
-      </VirtualNetworkSite>
-      <VirtualNetworkSite name="ristovnet01" Location="West Europe">
+      <VirtualNetworkSite name="yourvnet01" Location="West Europe">
         <AddressSpace>
           <AddressPrefix>10.0.0.0/16</AddressPrefix>
         </AddressSpace>
         <Subnets>
-          <Subnet name="ristosubnet01">
+          <Subnet name="yoursubnet01">
             <AddressPrefix>10.0.1.0/24</AddressPrefix>
           </Subnet>
         </Subnets>
