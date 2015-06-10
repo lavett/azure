@@ -1,0 +1,9 @@
+Add-AzureAccount
+
+Get-AzureSubscription
+Set-AzureSubscription -SubscriptionId ae49d2c3-02a4-4ab9-bcf8-xxxxxxxxxxxx
+Get-AzureService
+
+Get-AzureVNetConfig -ExportToFile "C:\users\test\vnetconfig.netcfg"
+
+Set-AzureVNetConfig -ConfigurationPath "C:\users\test\vnetconfig.netcfg"
