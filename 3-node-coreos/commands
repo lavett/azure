@@ -9,3 +9,8 @@ Get-AzureVNetConfig -ExportToFile "C:\users\test\vnetconfig.netcfg"
 Set-AzureVNetConfig -ConfigurationPath "C:\users\test\vnetconfig.netcfg"
 
 https://discovery.etcd.io/new
+
+journalctl -b -u oem-cloudinit.service --no-pager
+
+fleetctl list-machines
+
