@@ -1,16 +1,17 @@
-Add-AzureAccount
+PS C:\Users\Test> Add-AzureAccount
 
-Get-AzureSubscription
-Set-AzureSubscription -SubscriptionId ae49d2c3-02a4-4ab9-bcf8-xxxxxxxxxxxx
-Get-AzureService
+PS C:\Users\Test> Get-AzureSubscription
+PS C:\Users\Test> Set-AzureSubscription -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+PS C:\Users\Test> Get-AzureService
 
-Get-AzureVNetConfig -ExportToFile "C:\users\test\vnetconfig.netcfg"
+PS C:\Users\Test> Get-AzureVNetConfig -ExportToFile "C:\Users\Test\vnetconfig.netcfg"
 
-Set-AzureVNetConfig -ConfigurationPath "C:\users\test\vnetconfig.netcfg"
+PS C:\Users\Test> Set-AzureVNetConfig -ConfigurationPath "C:\Users\Test\vnetconfig.netcfg"
 
 https://discovery.etcd.io/new
 
-journalctl -b -u oem-cloudinit.service --no-pager
+youruser@yournode01 ~ $ sudo journalctl -b -u oem-cloudinit.service --no-pager
 
-fleetctl list-machines
+youruser@yournode01 ~ $ sudo fleetctl list-machines
 
+youruser@yournode01 ~ $ sudo docker run centos /bin/echo hello world
