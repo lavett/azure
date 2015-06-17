@@ -1,0 +1,14 @@
+#cloud-config
+
+coreos:
+  etcd:
+    discovery: https://discovery.etcd.io/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    addr: $private_ipv4:4001
+    peer-addr: $private_ipv4:7001
+  update:
+    reboot-strategy: etcd-lock
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
