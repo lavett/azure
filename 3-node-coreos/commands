@@ -8,6 +8,8 @@ PS C:\Users\Test> Get-AzureVNetConfig -ExportToFile "C:\Users\Test\vnetconfig.ne
 
 PS C:\Users\Test> Set-AzureVNetConfig -ConfigurationPath "C:\Users\Test\vnetconfig.netcfg"
 
+PS C:\Users\Test> Get-AzureVnetSite
+
 https://discovery.etcd.io/new
 
 youruser@yournode01 ~ $ sudo journalctl -b -u oem-cloudinit.service --no-pager
