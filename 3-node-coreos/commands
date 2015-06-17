@@ -12,6 +12,8 @@ PS C:\Users\Test> Get-AzureVnetSite
 
 https://discovery.etcd.io/new
 
+PS C:\Users\Test> Get-AzureVM –ServiceName yourcloud01 –Name yournode01 | Get-AzureEndpoint
+
 youruser@yournode01 ~ $ sudo journalctl -b -u oem-cloudinit.service --no-pager
 
 youruser@yournode01 ~ $ sudo fleetctl list-machines
