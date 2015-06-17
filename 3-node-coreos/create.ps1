@@ -1,11 +1,7 @@
 #create a 3 node coreos cluster with docker
-#replace with your subscription id
-$subscription="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $family=”CoreOS Alpha"
-#replace with your coreos user name
 $user="youruser"
-#replace with your coreos user password
-$password="y0urPassw0rD"
+$password="dittl0sen0rdhaerTACK"
 $location="West Europe"
 $image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 $svcname="yourcloud01"
@@ -19,12 +15,11 @@ $subnet="yoursubnet01"
 $node01ip="10.0.1.5"
 $node02ip="10.0.1.6"
 $node03ip="10.0.1.7"
-$cloudconfig="Z:\risto on my mac\Downloads\cloud-config.yaml"
+$cloudconfig="C:\Users\Test\cloud-config.yaml"
 
 New-AzureService -ServiceName $svcname -Location $location -Label $svcname
 New-AzureStorageAccount -StorageAccountName $store -Location $location
 Set-AzureStorageAccount $store
-set-azuresubscription -CurrentStorageAccountName $store -SubscriptionId $subscription
 $vm1=New-AzureVMConfig -Name $node01 -InstanceSize $vmsize -ImageName $image
 $vm1 | Add-AzureProvisioningConfig -Linux -CustomDataFile $cloudconfig -LinuxUser $user -Password $password
 $vm1 | Set-AzureSubnet -SubnetNames $subnet
