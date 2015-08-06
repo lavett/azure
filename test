@@ -8,6 +8,20 @@
                 "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
             }
         },
+        "ProjectName": {
+            "type": "string",
+            "defaultValue": "sch",
+            "metadata": {
+                "description": "abreviation of three letters Project"
+            }
+        },
+                "TypeName": {
+            "type": "string",
+            "defaultValue": "dev",
+            "metadata": {
+                "description": "abreviation of three letters Type"
+            }
+        },
         "adminUsername": {
             "type": "string",
             "metadata": {
@@ -73,7 +87,7 @@
         "publicIPAddressName": "myPublicIP",
         "publicIPAddressType": "Dynamic",
         "vmStorageAccountContainerName": "vhds",
-        "vmName": "MyVM",
+        "vmName": "[concat(parameters('ProjectName'),parameters('TypeName'))]",
         "vmSize": "Standard_D1",
         "virtualNetworkName": "MyVNET",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
