@@ -174,7 +174,7 @@
             "value": "[parameters('NumberSuffix')]"
           },
           "StorageAccountDef": {
-            "value": "[parameters('StorageAccountDef')]"
+            "value": "[variables('StorageAccountDef')]"
           },
           "Location": {
             "value": "[parameters('Location')]"
