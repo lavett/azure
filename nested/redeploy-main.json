@@ -5,7 +5,7 @@
     "EnvironmentPrefix": {
       "type": "String",
       "metadata": {
-        "description": "Prefix for the resources, Ex three letter customer name"
+        "description": "Prefix for the resources, Ex five letter customer name"
       }
     },
     "EnvironmentType": {
@@ -16,6 +16,7 @@
         "stg",
         "tst",
         "lab",
+        "qa",
         "prd"
       ],
       "metadata": {
@@ -142,6 +143,9 @@
           },
           "Location": {
             "value": "[parameters('Location')]"
+          },
+          "StorageAccountDef": {
+            "value": "[variables('StorageAccountDef')]"
           }
         }
       }
@@ -223,6 +227,12 @@
           },
           "FunctionType": {
             "value": "[parameters('FunctionType')]"
+          },
+          "NumberSuffix": {
+            "value": "[parameters('NumberSuffix')]"
+          },
+          "StorageAccountDef": {
+            "value": "[parameters('StorageAccountDef')]"
           },
           "Location": {
             "value": "[parameters('Location')]"

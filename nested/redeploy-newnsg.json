@@ -11,6 +11,12 @@
     "FunctionType": {
       "type": "String"
     },
+    "NumberSuffix": {
+      "type": "String"
+    },
+    "StorageAccountDef": {
+      "type": "String"
+    },
     "Location": {
       "type": "String"
     }
@@ -19,8 +25,11 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),'nsg')]",
-      "location": "[parameters('location')]",
+      "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NetworkSecurityGroupDef'))]",
+      "location": "[parameters('Location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('EnvironmentPrefix'),parameters('EnvironmentType'),'app',parameters('NumberSuffix'),parameters('StorageAccountDef'))]"
+      ],
       "properties": {
         "securityRules": [
           {
