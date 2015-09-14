@@ -17,9 +17,6 @@
     "NetworkSecurityGroupDef": {
       "type": "String"
     },
-    "Testvariabel": {
-      "type": "String"
-    },
     "Location": {
       "type": "String"
     }
