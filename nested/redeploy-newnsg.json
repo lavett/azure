@@ -20,6 +20,9 @@
     "StorageAccountDef": {
       "type": "String"
     },
+    "Testvariabel": {
+      "type": "String"
+    },
     "Location": {
       "type": "String"
     }
@@ -31,7 +34,7 @@
       "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NetworkSecurityGroupDef'))]",
       "location": "[parameters('Location')]",
       "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/',parameters('EnvironmentPrefix'),parameters('EnvironmentType'),'app',parameters('NumberSuffix'),parameters('StorageAccountDef'))]"
+        "[parameters('Testvariabel')]"
       ],
       "properties": {
         "securityRules": [

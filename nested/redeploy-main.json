@@ -115,7 +115,8 @@
     "VirtualMachineDef": "vm",
     "StorageAccountDef": "sa",
     "NetworkGroupDef": "net",
-    "NetworkSecurityGroupDef": "nsg"
+    "NetworkSecurityGroupDef": "nsg",
+    "Testvariabel": "[concat('Microsoft.Storage/storageAccounts/',parameters('EnvironmentPrefix'),parameters('EnvironmentType'),'app',parameters('NumberSuffix'),parameters('StorageAccountDef'))]"
   },
   "resources": [
     {
@@ -178,6 +179,9 @@
           },
           "StorageAccountDef": {
             "value": "[variables('StorageAccountDef')]"
+          },
+          "Testvariabel": {
+            "value": "[variables('Testvariabel')]"
           },
           "Location": {
             "value": "[parameters('Location')]"
