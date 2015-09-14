@@ -90,15 +90,30 @@
       "metadata": {
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
       }
+    },
+    "ServerSize": {
+      "type": "string",
+      "defaultValue": "Standard_D1",
+      "allowedValues": [
+        "Standard_D1",
+        "Standard_D2",
+        "Standard_D3"
+      ],
+      "metadata": {
+        "description": "The size and type for the VM."
+      }
     }
   },
   "variables": {
-    "TemplateBaseLink": "https://raw.githubusercontent.com/jonaserikson/azure/master/nested2/",
+    "TemplateBaseLink": "https://raw.githubusercontent.com/lavett/azure/master/nested/",
     "TemplateBaseFileName": "redeploy-new",
     "StorageAccountFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('StorageAccountDef'),'.json')]",
     "NetworkSecurityGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NetworkSecurityGroupDef'),'.json')]",
-    "VirtualMachineFile": "[concat(parameters('windowsOSVersion'),'.json')]",
+    "NetworkGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NetworkGroupDef'),'.json')]",
+    "VirtualMachineFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('VirtualMachineDef'),'.json')]",
+    "VirtualMachineDef": "vm",
     "StorageAccountDef": "sa",
+    "NetworkGroupDef": "net",
     "NetworkSecurityGroupDef": "nsg"
   },
   "resources": [
@@ -110,6 +125,64 @@
         "mode": "incremental",
         "templateLink": {
           "uri": "[variables('StorageAccountFile')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "EnvironmentPrefix": {
+            "value": "[parameters('EnvironmentPrefix')]"
+          },
+          "EnvironmentType": {
+            "value": "[parameters('EnvironmentType')]"
+          },
+          "FunctionType": {
+            "value": "[parameters('FunctionType')]"
+          },
+          "NumberSuffix": {
+            "value": "[parameters('NumberSuffix')]"
+          },
+          "Location": {
+            "value": "[parameters('Location')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "newnetworkgroup",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('NetworkGroupFile')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "EnvironmentPrefix": {
+            "value": "[parameters('EnvironmentPrefix')]"
+          },
+          "EnvironmentType": {
+            "value": "[parameters('EnvironmentType')]"
+          },
+          "FunctionType": {
+            "value": "[parameters('FunctionType')]"
+          },
+          "NumberSuffix": {
+            "value": "[parameters('NumberSuffix')]"
+          },
+          "Location": {
+            "value": "[parameters('Location')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "newvirtualmachine",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('VirtualmachineFile')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
