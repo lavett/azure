@@ -14,9 +14,6 @@
     "NumberSuffix": {
       "type": "String"
     },
-    "StorageAccountDef": {
-      "type": "String"
-    },
     "StorageAccountType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
@@ -33,7 +30,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'),parameters('StorageAccountDef'))]",
+      "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'),'stg']",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
       "properties": {
