@@ -31,7 +31,7 @@
       "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NetworkSecurityGroupDef'))]",
       "location": "[parameters('Location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/', parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'),parameters('StorageAccountDef'))]"
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'),parameters('StorageAccountDef'))]"
       ],
       "properties": {
         "securityRules": [
