@@ -27,9 +27,6 @@
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NetworkSecurityGroupDef'))]",
       "location": "[parameters('Location')]",
-      "dependsOn": [
-        "[parameters('Location')]"
-      ],
       "properties": {
         "securityRules": [
           {
