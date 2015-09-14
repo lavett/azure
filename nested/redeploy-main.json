@@ -174,9 +174,6 @@
           "NetworkSecurityGroupDef": {
             "value": "[variables('NetworkSecurityGroupDef')]"
           },
-          "StorageAccountDef": {
-            "value": "[variables('StorageAccountDef')]"
-          },
           "Testvariabel": {
             "value": "[variables('Testvariabel')]"
           },
