@@ -152,64 +152,6 @@
     },
     {
       "apiVersion": "2015-01-01",
-      "name": "newnetworkgroup",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('NetworkGroupFile')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "EnvironmentPrefix": {
-            "value": "[parameters('EnvironmentPrefix')]"
-          },
-          "EnvironmentType": {
-            "value": "[parameters('EnvironmentType')]"
-          },
-          "FunctionType": {
-            "value": "[parameters('FunctionType')]"
-          },
-          "NumberSuffix": {
-            "value": "[parameters('NumberSuffix')]"
-          },
-          "Location": {
-            "value": "[parameters('Location')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "newvirtualmachine",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('VirtualmachineFile')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "EnvironmentPrefix": {
-            "value": "[parameters('EnvironmentPrefix')]"
-          },
-          "EnvironmentType": {
-            "value": "[parameters('EnvironmentType')]"
-          },
-          "FunctionType": {
-            "value": "[parameters('FunctionType')]"
-          },
-          "NumberSuffix": {
-            "value": "[parameters('NumberSuffix')]"
-          },
-          "Location": {
-            "value": "[parameters('Location')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
       "name": "newnetworksecuritygroup",
       "type": "Microsoft.Resources/deployments",
       "properties": {
