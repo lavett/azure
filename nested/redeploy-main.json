@@ -144,6 +144,9 @@
           "Location": {
             "value": "[parameters('Location')]"
           },
+          "NetworkSecurityGroupDef": {
+            "value": "[variables('NetworkSecurityGroupDef')]"
+          },
           "StorageAccountDef": {
             "value": "[variables('StorageAccountDef')]"
           }
