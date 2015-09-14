@@ -17,6 +17,9 @@
     "NetworkSecurityGroupDef": {
       "type": "String"
     },
+    "StorageAccountDef": {
+      "type": "String"
+    },
     "Location": {
       "type": "String"
     }

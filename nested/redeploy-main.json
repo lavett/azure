@@ -176,6 +176,9 @@
           "NetworkSecurityGroupDef": {
             "value": "[variables('NetworkSecurityGroupDef')]"
           },
+          "StorageAccountDef": {
+            "value": "[variables('StorageAccountDef')]"
+          },
           "Location": {
             "value": "[parameters('Location')]"
           }
