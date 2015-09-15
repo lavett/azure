@@ -110,8 +110,8 @@
     "TemplateBaseFileName": "redeploy-new",
     "SrvBaseName": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'))]",
     "BaseName": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'))]",
-    "StorageAccountFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('SADef'),'.json')]",
-    "NetworkSecurityGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NSGDef'),parameters('FunctionType'),'.json')]",
+    "SAFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('SADef'),'.json')]",
+    "NSGFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NSGDef'),parameters('FunctionType'),'.json')]",
     "NetworkGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NetworkGroupDef'),'.json')]",
     "VirtualMachineFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('VirtualMachineDef'),'.json')]",
     "VirtualMachineDef": "vm",
@@ -122,26 +122,17 @@
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "newstorageaccount",
+      "name": "newSA",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "[variables('StorageAccountFile')]",
+          "uri": "[variables('SAFile')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "EnvironmentPrefix": {
-            "value": "[parameters('EnvironmentPrefix')]"
-          },
-          "EnvironmentType": {
-            "value": "[parameters('EnvironmentType')]"
-          },
-          "FunctionType": {
-            "value": "[parameters('FunctionType')]"
-          },
-          "NumberSuffix": {
-            "value": "[parameters('NumberSuffix')]"
+          "BaseName": {
+            "value": "[parameters('BaseName')]"
           },
           "SADef": {
             "value": "[variables('SADef')]"
@@ -154,12 +145,12 @@
     },
     {
       "apiVersion": "2015-01-01",
-      "name": "newnetworksecuritygroup",
+      "name": "newNSG",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "[variables('NetworkSecurityGroupFile')]",
+          "uri": "[variables('NSGFile')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
