@@ -108,14 +108,16 @@
   "variables": {
     "TemplateBaseLink": "https://raw.githubusercontent.com/lavett/azure/master/nested/",
     "TemplateBaseFileName": "redeploy-new",
-    "StorageAccountFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('StorageAccountDef'),'.json')]",
-    "NetworkSecurityGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NetworkSecurityGroupDef'),'.json')]",
+    "SrvBaseName": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'))]",
+    "BaseName": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'))]",
+    "StorageAccountFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('SADef'),'.json')]",
+    "NetworkSecurityGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NSGDef'),parameters('FunctionType'),'.json')]",
     "NetworkGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NetworkGroupDef'),'.json')]",
     "VirtualMachineFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('VirtualMachineDef'),'.json')]",
     "VirtualMachineDef": "vm",
-    "StorageAccountDef": "sa",
+    "SADef": "sa",
     "NetworkGroupDef": "net",
-    "NetworkSecurityGroupDef": "nsg"
+    "NSGDef": "nsg"
   },
   "resources": [
     {
@@ -141,8 +143,8 @@
           "NumberSuffix": {
             "value": "[parameters('NumberSuffix')]"
           },
-          "StorageAccountDef": {
-            "value": "[variables('StorageAccountDef')]"
+          "SADef": {
+            "value": "[variables('SADef')]"
           },
           "Location": {
             "value": "[parameters('Location')]"
@@ -161,23 +163,14 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "EnvironmentPrefix": {
-            "value": "[parameters('EnvironmentPrefix')]"
+          "BaseName": {
+            "value": "[parameters('BaseName')]"
           },
-          "EnvironmentType": {
-            "value": "[parameters('EnvironmentType')]"
+          "NSGDef": {
+            "value": "[variables('NSGDef')]"
           },
-          "FunctionType": {
-            "value": "[parameters('FunctionType')]"
-          },
-          "NumberSuffix": {
-            "value": "[parameters('NumberSuffix')]"
-          },
-          "NetworkSecurityGroupDef": {
-            "value": "[variables('NetworkSecurityGroupDef')]"
-          },
-          "StorageAccountDef": {
-            "value": "[variables('StorageAccountDef')]"
+          "SADef": {
+            "value": "[variables('SADef')]"
           },
           "Location": {
             "value": "[parameters('Location')]"
