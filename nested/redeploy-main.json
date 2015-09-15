@@ -115,9 +115,12 @@
     "NSGFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NSGDef'),parameters('Function'),'.json')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
+    "PIPType": "Dynamic",
     "VMDef": "vm",
     "SADef": "sa",
     "NETDef": "net",
+    "NICDef": "nic",
+    "PIPDef": "pip",
     "NSGDef": "nsg"
   },
   "resources": [
@@ -137,6 +140,44 @@
           },
           "SADef": {
             "value": "[variables('SADef')]"
+          },
+          "Location": {
+            "value": "[parameters('Location')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "newNET",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('NETFile')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "BaseName": {
+            "value": "[variables('BaseName')]"
+          },
+          "BaseSrvName": {
+            "value": "[variables('BaseSrvName')]"
+          },
+          "BaseFuncName": {
+            "value": "[variables('BaseFuncName')]"
+          },
+          "NETDef": {
+            "value": "[variables('NETDef')]"
+          },
+          "NICDef": {
+            "value": "[variables('NICDef')]"
+          },
+          "PIPDef": {
+            "value": "[variables('PIPDef')]"
+          },
+          "PIPType": {
+            "value": "[variables('PIPType')]"
           },
           "Location": {
             "value": "[parameters('Location')]"
