@@ -2,22 +2,16 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "EnvironmentPrefix": {
+    "BaseSrvName": {
       "type": "String"
     },
-    "EnvironmentType": {
+    "SADef": {
       "type": "string"
     },
-    "FunctionType": {
+    "Location": {
       "type": "String"
     },
-    "NumberSuffix": {
-      "type": "String"
-    },
-    "StorageAccountDef": {
-      "type": "String"
-    },
-    "StorageAccountType": {
+    "SAType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
       "allowedValues": [
@@ -25,19 +19,16 @@
         "Standard_GRS",
         "Standard_ZRS"
       ]
-    },
-    "Location": {
-      "type": "String"
     }
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'),parameters('StorageAccountDef'))]",
+      "name": "[concat(parameters('BaseSrvName'),parameters('SADef'))]",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
       "properties": {
-        "accountType": "[parameters('StorageAccountType')]"
+        "accountType": "[parameters('SAType')]"
       }
     }
   ]

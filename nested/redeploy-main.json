@@ -2,13 +2,13 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "EnvironmentPrefix": {
+    "Customer": {
       "type": "String",
       "metadata": {
         "description": "Prefix for the resources, Ex five letter customer name"
       }
     },
-    "EnvironmentType": {
+    "Environment": {
       "type": "string",
       "defaultValue": "dev",
       "allowedValues": [
@@ -23,7 +23,7 @@
         "description": "Type of environment"
       }
     },
-    "FunctionType": {
+    "Function": {
       "type": "String",
       "defaultValue": "app",
       "allowedValues": [
@@ -36,7 +36,7 @@
         "description": "Type of function / application"
       }
     },
-    "NumberSuffix": {
+    "Number": {
       "type": "string",
       "defaultValue": "01",
       "allowedValues": [
@@ -68,19 +68,19 @@
         "description": "Allowed locations is West Europe and North Europe"
       }
     },
-    "adminUsername": {
+    "Username": {
       "type": "string",
       "metadata": {
         "description": "Local root or administrator username"
       }
     },
-    "adminPassword": {
+    "Password": {
       "type": "securestring",
       "metadata": {
         "description": "Password for the Virtual Machine. Must be at least 8 characters and one have at least one capital letter, one number and one special character"
       }
     },
-    "windowsOSVersion": {
+    "Image": {
       "type": "string",
       "defaultValue": "2012-R2-Datacenter",
       "allowedValues": [
@@ -92,7 +92,7 @@
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
       }
     },
-    "ServerSize": {
+    "Size": {
       "type": "string",
       "defaultValue": "Standard_D1",
       "allowedValues": [
@@ -106,17 +106,18 @@
     }
   },
   "variables": {
-    "TemplateBaseLink": "https://raw.githubusercontent.com/lavett/azure/master/nested/",
-    "TemplateBaseFileName": "redeploy-new",
-    "SrvBaseName": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'),parameters('FunctionType'),parameters('NumberSuffix'))]",
-    "BaseName": "[concat(parameters('EnvironmentPrefix'),parameters('EnvironmentType'))]",
-    "SAFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('SADef'),'.json')]",
-    "NSGFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NSGDef'),parameters('FunctionType'),'.json')]",
-    "NetworkGroupFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('NetworkGroupDef'),'.json')]",
-    "VirtualMachineFile": "[concat(variables('TemplateBaseLink'),variables('TemplateBaseFileName'),variables('VirtualMachineDef'),'.json')]",
-    "VirtualMachineDef": "vm",
+    "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/nested/",
+    "TemplateBaseFile": "redeploy-new",
+    "BaseSrvName": "[concat(parameters('Customer'),parameters('Environment'),parameters('Function'),parameters('Number'))]",
+    "BaseName": "[concat(parameters('Customer'),parameters('Environment'))]",
+    "BaseFuncName": "[concat(parameters('Customer'),parameters('Environment'),parameters('Function'))]",
+    "SAFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('SADef'),'.json')]",
+    "NSGFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NSGDef'),parameters('Function'),'.json')]",
+    "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
+    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
+    "VMDef": "vm",
     "SADef": "sa",
-    "NetworkGroupDef": "net",
+    "NETDef": "net",
     "NSGDef": "nsg"
   },
   "resources": [
@@ -131,8 +132,8 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "BaseName": {
-            "value": "[parameters('BaseName')]"
+          "BaseSrvName": {
+            "value": "[parameters('BaseSrvName')]"
           },
           "SADef": {
             "value": "[variables('SADef')]"
@@ -154,14 +155,11 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "BaseName": {
-            "value": "[parameters('BaseName')]"
+          "BaseFuncName": {
+            "value": "[parameters('BaseFuncName')]"
           },
           "NSGDef": {
             "value": "[variables('NSGDef')]"
-          },
-          "SADef": {
-            "value": "[variables('SADef')]"
           },
           "Location": {
             "value": "[parameters('Location')]"
