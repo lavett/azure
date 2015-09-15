@@ -115,10 +115,13 @@
     "NSGFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NSGDef'),parameters('Function'),'.json')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
+    "NETAddress": "10.10.0.0/16",
+    "APPSubnet": "10.10.2.0/24",
     "PIPType": "Dynamic",
     "VMDef": "vm",
     "SADef": "sa",
     "NETDef": "net",
+    "SUBDef": "sub",
     "NICDef": "nic",
     "PIPDef": "pip",
     "NSGDef": "nsg"
@@ -167,6 +170,9 @@
           "BaseFuncName": {
             "value": "[variables('BaseFuncName')]"
           },
+          "NSGDef": {
+            "value": "[variables('NSGDef')]"
+          },
           "NETDef": {
             "value": "[variables('NETDef')]"
           },
@@ -176,8 +182,17 @@
           "PIPDef": {
             "value": "[variables('PIPDef')]"
           },
+          "SUBDef": {
+            "value": "[variables('SUBDef')]"
+          },
           "PIPType": {
             "value": "[variables('PIPType')]"
+          },
+          "NETAddress": {
+            "value": "[variables('NETAddress')]"
+          },
+          "APPsubnet": {
+            "value": "[variables('APPsubnet')]"
           },
           "Location": {
             "value": "[parameters('Location')]"

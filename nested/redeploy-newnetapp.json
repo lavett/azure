@@ -11,6 +11,9 @@
     "BaseFuncName": {
       "type": "String"
     },
+    "NSGDef": {
+      "type": "string"
+    },
     "NETDef": {
       "type": "string"
     },
@@ -20,7 +23,16 @@
     "PIPDef": {
       "type": "string"
     },
+    "SUBDef": {
+      "type": "string"
+    },
     "PIPType": {
+      "type": "string"
+    },
+    "NETAddress": {
+      "type": "string"
+    },
+    "APPSubnet": {
       "type": "string"
     },
     "Location": {
@@ -43,21 +55,21 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/virtualNetworks",
-      "name": "[variables('virtualNetworkName')]",
-      "location": "[variables('location')]",
+      "name": "[concat(parameters('BaseName'),parameters('NETDef'))]",
+      "location": "[parameters('Location')]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[variables('addressPrefix')]"
+            "[parameters('NETaddress')]"
           ]
         },
         "subnets": [
           {
-            "name": "[variables('WebSubnetName')]",
+            "name": "[concat(parameters('BaseFuncName'),parameters('SUBDef'))]",
             "properties": {
-              "addressPrefix": "[variables('WebSubnetPrefix')]",
+              "addressPrefix": "[parameters('APPSubnet')]",
               "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('WebNSGName'))]"
+                "id": "[concat('Microsoft.Network/networkSecurityGroups', parameters('BaseFuncName'),parameters('NSGDef'))]"
               }
             }
           }
@@ -67,17 +79,8 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[variables('nicName')]",
-      "location": "[variables('location')]",
-      "tags": {
-        "Department": "[parameters('departmentName')]",
-        "Application": "[parameters('applicationName')]",
-        "Created By": "[parameters('createdBy')]"
-      },
-      "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-      ],
+      "name": "[concat(parameters('BaseSrvName'),parameters('NICDef'))]",
+      "location": "[variables('Location')]",
       "properties": {
         "ipConfigurations": [
           {
@@ -85,10 +88,10 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                "id": "[concat('Microsoft.Network/publicIPAddresses',parameters('BaseSrvName'),parameters('PIPDef'))]"
               },
               "subnet": {
-                "id": "[variables('subnetRef')]"
+                "id": "[concat('Microsoft.Network/virtualNetworks',parameters('BaseName'),parameters('NETDef'),'/subnets/',parameters('BaseFuncName'),parameters('SUBDef'))]"
               }
             }
           }
