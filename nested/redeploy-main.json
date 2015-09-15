@@ -133,7 +133,7 @@
         },
         "parameters": {
           "BaseSrvName": {
-            "value": "[parameters('BaseSrvName')]"
+            "value": "[variables('BaseSrvName')]"
           },
           "SADef": {
             "value": "[variables('SADef')]"
@@ -156,7 +156,7 @@
         },
         "parameters": {
           "BaseFuncName": {
-            "value": "[parameters('BaseFuncName')]"
+            "value": "[variables('BaseFuncName')]"
           },
           "NSGDef": {
             "value": "[variables('NSGDef')]"
