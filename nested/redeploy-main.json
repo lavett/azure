@@ -71,11 +71,11 @@
     },
     "Image": {
       "type": "string",
-      "defaultValue": "Windows2012R2",
+      "defaultValue": "Win2012",
       "allowedValues": [
         "Windows2008",
-        "Windows2012R2",
-        "Windows2012R2-SQL2012SP2"
+        "Win2012",
+        "Win2012-SQL2012"
       ],
       "metadata": {
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
