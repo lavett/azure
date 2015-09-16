@@ -105,6 +105,48 @@
               "priority": 102,
               "direction": "Inbound"
             }
+          },
+          {
+            "name": "Port_8081",
+            "properties": {
+              "description": "Port 8081",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "8081",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 103,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Port_3030",
+            "properties": {
+              "description": "Port 3030",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3030",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 104,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "Port_30000",
+            "properties": {
+              "description": "Port 30000",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "30000",
+              "sourceAddressPrefix": "Internet",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 105,
+              "direction": "Inbound"
+            }
           }
         ]
       }

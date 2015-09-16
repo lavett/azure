@@ -77,34 +77,6 @@
               "priority": 100,
               "direction": "Inbound"
             }
-          },
-          {
-            "name": "HTTP",
-            "properties": {
-              "description": "Port 80",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "80",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 101,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "HTTPS",
-            "properties": {
-              "description": "Port 443",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "443",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 102,
-              "direction": "Inbound"
-            }
           }
         ]
       }

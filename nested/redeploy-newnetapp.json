@@ -32,7 +32,16 @@
     "NETAddress": {
       "type": "string"
     },
+    "WEBSubnet": {
+      "type": "string"
+    },
     "APPSubnet": {
+      "type": "string"
+    },
+    "DBSubnet": {
+      "type": "string"
+    },
+    "SRVSubnet": {
       "type": "string"
     },
     "Location": {
