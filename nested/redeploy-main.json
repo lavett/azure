@@ -201,35 +201,11 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "BaseName": {
-            "value": "[variables('BaseName')]"
-          },
           "BaseSrvName": {
             "value": "[variables('BaseSrvName')]"
           },
-          "BaseFuncName": {
-            "value": "[variables('BaseFuncName')]"
-          },
-          "NSGDef": {
-            "value": "[variables('NSGDef')]"
-          },
-          "NETDef": {
-            "value": "[variables('NETDef')]"
-          },
           "NICDef": {
             "value": "[variables('NICDef')]"
-          },
-          "PIPDef": {
-            "value": "[variables('PIPDef')]"
-          },
-          "SUBDef": {
-            "value": "[variables('SUBDef')]"
-          },
-          "PIPType": {
-            "value": "[variables('PIPType')]"
-          },
-          "NETAddress": {
-            "value": "[variables('NETAddress')]"
           },
           "SADef": {
             "value": "[variables('SADef')]"
