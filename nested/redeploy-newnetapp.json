@@ -43,7 +43,7 @@
     "NETid": "[concat(parameters('BaseName'),parameters('NETDef'))]",
     "NSGid": "[concat(parameters('BaseFuncName'),parameters('NSGDef'))]",
     "PIPid": "[concat(parameters('BaseSrvName'),parameters('PIPDef'))]",
-    "SUBid": "[concat(parameters('BaseFuncName'),variables('NSGDef'))]"
+    "SUBid": "[concat(parameters('BaseFuncName'),parameters('SUBDef'))]"
   },
   "resources": [
     {
