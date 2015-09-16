@@ -71,7 +71,7 @@
     },
     "Image": {
       "type": "string",
-      "defaultValue": "Win2012R2",
+      "defaultValue": "Windows2012R2",
       "allowedValues": [
         "2008-R2-SP1",
         "2012-Datacenter",
