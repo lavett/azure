@@ -73,11 +73,12 @@
       "type": "string",
       "defaultValue": "Win2012",
       "allowedValues": [
-        "Windows2008",
+        "Win2008",
         "Win2012",
+        "Win2016-Preview",
         "Win2012-SQL2012",
         "Win2012-SQL2014",
-        "Win2012-SQL2016-Preview",
+        "Win2012-SQL2016-Preview"
       ],
       "metadata": {
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
@@ -104,11 +105,13 @@
     "BaseName": "[concat(parameters('Customer'),parameters('Environment'))]",
     "BaseFuncName": "[concat(parameters('Customer'),parameters('Environment'),parameters('Function'))]",
     "SAFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('SADef'),'.json')]",
-    "NSGFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NSGDef'),parameters('Function'),'.json')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),parameters('Function'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
     "NETAddress": "10.10.0.0/16",
+    "WEBSubnet": "10.10.1.0/24",
     "APPSubnet": "10.10.2.0/24",
+    "DBSubnet": "10.10.3.0/24",
+    "SRVSubnet": "10.10.4.0/24",
     "PIPType": "Dynamic",
     "VMDef": "vm",
     "SADef": "sa",
@@ -183,8 +186,17 @@
           "NETAddress": {
             "value": "[variables('NETAddress')]"
           },
+          "WEBsubnet": {
+            "value": "[variables('WEBsubnet')]"
+          },
           "APPsubnet": {
             "value": "[variables('APPsubnet')]"
+          },
+          "DBsubnet": {
+            "value": "[variables('DBsubnet')]"
+          },
+          "SRVsubnet": {
+            "value": "[variables('SRVsubnet')]"
           },
           "Location": {
             "value": "[variables('Location')]"
