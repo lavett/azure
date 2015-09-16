@@ -105,7 +105,6 @@
     "NSGFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NSGDef'),parameters('Function'),'.json')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),parameters('Function'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
-    "StorageAccountID": "[concat('Microsoft.Storage/storageAccounts/',variables('BaseSrvName'),variables('SADef'))]",
     "NETAddress": "10.10.0.0/16",
     "APPSubnet": "10.10.2.0/24",
     "PIPType": "Dynamic",
@@ -193,6 +192,10 @@
     },
   {
       "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Resources/deployments/', 'newNET')]",
+        "[concat('Microsoft.Resources/deployments/', 'newSA')]"
+      ],
       "name": "newVM",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -222,9 +225,6 @@
           },
           "Location": {
             "value": "[variables('Location')]"
-          },
-          "StorageAccountID": {
-            "value": "[variables('StorageAccountID')]"
           }
         }
       }

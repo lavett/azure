@@ -22,9 +22,6 @@
     },
     "Location": {
       "type": "string"
-    },
-    "StorageAccountID": {
-      "type": "string"
     }
   },
   "variables": {
@@ -41,10 +38,6 @@
       "name": "[parameters('BaseSrvName')]",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
-      "dependsOn": [
-        "[parameters('StorageAccountID')]",
-        "[concat('Microsoft.Network/networkInterfaces/', variables('NICid'))]"
-      ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('Size')]"
