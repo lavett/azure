@@ -32,7 +32,7 @@
     "NETAddress": {
       "type": "string"
     },
-    "APPSubnet": {
+    "SADef": {
       "type": "string"
     },
     "Size": {

@@ -231,8 +231,8 @@
           "NETAddress": {
             "value": "[variables('NETAddress')]"
           },
-          "APPsubnet": {
-            "value": "[variables('APPsubnet')]"
+          "SADef": {
+            "value": "[variables('SADef')]"
           },
           "Size": {
             "value": "[parameters('Size')]"
