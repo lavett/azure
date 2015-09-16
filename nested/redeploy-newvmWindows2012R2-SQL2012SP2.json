@@ -29,7 +29,7 @@
     "SAid": "[concat(parameters('BaseSrvName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftSQLServer",
     "imageOffer": "SQL2012SP2-WS2012R2",
-    "windowsOSVersion": "Enterprise",
+    "windowsOSVersion": "Standard",
     "OSDiskName": "osdisk1"
   },
   "resources": [
