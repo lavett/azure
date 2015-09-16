@@ -57,17 +57,6 @@
         "description": "Sequence number for the resource"
       }
     },
-    "Location": {
-      "type": "String",
-      "defaultValue": "West Europe",
-      "allowedValues": [
-        "West Europe",
-        "North Europe"
-      ],
-      "metadata": {
-        "description": "Allowed locations is West Europe and North Europe"
-      }
-    },
     "Username": {
       "type": "string",
       "metadata": {
@@ -106,6 +95,7 @@
     }
   },
   "variables": {
+    "Location": "[resourceGroup().location]",
     "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/nested/",
     "TemplateBaseFile": "redeploy-new",
     "BaseSrvName": "[concat(parameters('Customer'),parameters('Environment'),parameters('Function'),parameters('Number'))]",
@@ -145,7 +135,7 @@
             "value": "[variables('SADef')]"
           },
           "Location": {
-            "value": "[parameters('Location')]"
+            "value": "[variables('Location')]"
           }
         }
       }
@@ -195,7 +185,7 @@
             "value": "[variables('APPsubnet')]"
           },
           "Location": {
-            "value": "[parameters('Location')]"
+            "value": "[variables('Location')]"
           }
         }
       }
@@ -218,7 +208,7 @@
             "value": "[variables('NSGDef')]"
           },
           "Location": {
-            "value": "[parameters('Location')]"
+            "value": "[variables('Location')]"
           }
         }
       }
