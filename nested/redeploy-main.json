@@ -105,7 +105,6 @@
     "NSGFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NSGDef'),parameters('Function'),'.json')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),parameters('Function'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
-    "NSGid": "[concat(variables('BaseFuncName'),variables('NSGDef'))]",
     "NETAddress": "10.10.0.0/16",
     "APPSubnet": "10.10.2.0/24",
     "PIPType": "Dynamic",
@@ -145,9 +144,6 @@
       "apiVersion": "2015-01-01",
       "name": "newNET",
       "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
-        "[concat('Microsoft.Network/networkSecurityGroups/', variables('NSGid'))]"
-      ],
       "properties": {
         "mode": "incremental",
         "templateLink": {
@@ -187,29 +183,6 @@
           },
           "APPsubnet": {
             "value": "[variables('APPsubnet')]"
-          },
-          "Location": {
-            "value": "[variables('Location')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "newNSG",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('NSGFile')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "BaseFuncName": {
-            "value": "[variables('BaseFuncName')]"
-          },
-          "NSGDef": {
-            "value": "[variables('NSGDef')]"
           },
           "Location": {
             "value": "[variables('Location')]"
