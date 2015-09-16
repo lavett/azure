@@ -94,7 +94,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('PIPid')]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PIPid'))]"
               },
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'),'/subnets/',variables('SUBid'))]"
