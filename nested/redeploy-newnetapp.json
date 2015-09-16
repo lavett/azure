@@ -43,6 +43,8 @@
     "NETid": "[concat(parameters('BaseName'),parameters('NETDef'))]",
     "NSGid": "[concat(parameters('BaseFuncName'),parameters('NSGDef'))]",
     "PIPid": "[concat(parameters('BaseSrvName'),parameters('PIPDef'))]",
+    "VNETid": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'))]",
+    "SUBRef": "[concat(variables('VNETid'),'/subnets/',variables('SUBid'))]",
     "SUBid": "[concat(parameters('BaseFuncName'),parameters('SUBDef'))]"
   },
   "resources": [
@@ -97,7 +99,7 @@
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PIPid'))]"
               },
               "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'),'/subnets/',variables('SUBid'))]"
+                "id": "[variables('SUBRef')]"
               }
             }
           }
