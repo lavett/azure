@@ -65,6 +65,9 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[concat(parameters('BaseName'),parameters('NETDef'))]",
       "location": "[parameters('Location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkSecurityGroups/', variables('NSGid'))]"
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -89,6 +92,10 @@
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[concat(parameters('BaseSrvName'),parameters('NICDef'))]",
       "location": "[parameters('Location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('PIPid'))]",
+        "[concat('Microsoft.Network/virtualNetworks/', variables('NETid'))]"
+      ],
       "properties": {
         "ipConfigurations": [
           {
