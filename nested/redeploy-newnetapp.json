@@ -39,6 +39,12 @@
       "type": "string"
     }
   },
+  "variables": {
+    "NETid": "[concat(parameters('BaseName'),parameters('NETDef'))]",
+    "NSGid": "[concat(parameters('BaseFuncName'),parameters('NSGDef'))]",
+    "PIPid": "[concat(parameters('BaseSrvName'),parameters('PIPDef'))]",
+    "SUBid": "[concat(parameters('BaseFuncName'),variables('NSGDef'))]"
+  },
   "resources": [
     {
       "type": "Microsoft.Storage/publicIPAddresses",
@@ -69,7 +75,7 @@
             "properties": {
               "addressPrefix": "[parameters('APPSubnet')]",
               "networkSecurityGroup": {
-                "id": "[concat('Microsoft.Network/networkSecurityGroups', parameters('BaseFuncName'),parameters('NSGDef'))]"
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('NSGid'))]"
               }
             }
           }
@@ -88,10 +94,10 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[concat('Microsoft.Network/publicIPAddresses',parameters('BaseSrvName'),parameters('PIPDef'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('PIPid')]"
               },
               "subnet": {
-                "id": "[concat('Microsoft.Network/virtualNetworks',parameters('BaseName'),parameters('NETDef'),'/subnets/',parameters('BaseFuncName'),parameters('SUBDef'))]"
+                "id": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'),'/subnets/',variables('SUBid'))]"
               }
             }
           }
