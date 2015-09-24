@@ -160,7 +160,7 @@
       "properties": {
         "ipConfigurations": [
           {
-            "name": "ipconfig1",
+            "name": "[concat(parameters('BaseSrvName'),parameters('NICDef'))]",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
