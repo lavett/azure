@@ -102,7 +102,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "10.10.2.0/24",
               "access": "Allow",
-              "priority": 101,
+              "priority": 102,
               "direction": "Inbound"
             }
           },
@@ -116,7 +116,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 102,
+              "priority": 103,
               "direction": "Inbound"
             }
           },
@@ -130,7 +130,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 103,
+              "priority": 104,
               "direction": "Inbound"
             }
           },
@@ -144,7 +144,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 104,
+              "priority": 105,
               "direction": "Inbound"
             }
           },
@@ -158,7 +158,7 @@
               "sourceAddressPrefix": "Internet",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 105,
+              "priority": 106,
               "direction": "Inbound"
             }
           }
