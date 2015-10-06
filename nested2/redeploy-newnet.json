@@ -157,8 +157,7 @@
       "name": "[concat(parameters('ServerName'),parameters('NICDef'))]",
       "location": "[parameters('Location')]",
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('PIPid'))]",
-        "[concat('Microsoft.Network/virtualNetworks/', variables('NETid'))]"
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('PIPid'))]"
       ],
       "properties": {
         "ipConfigurations": [
