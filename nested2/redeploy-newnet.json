@@ -46,100 +46,6 @@
   },
   "resources": [
     {
-      "apiVersion": "2015-05-01-preview",
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[variables('NSGid')]",
-      "location": "[parameters('Location')]",
-      "properties": {
-        "securityRules": [
-          {
-            "name": "RDP_ALL",
-            "properties": {
-              "description": "Port 3389",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "3389",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 100,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "HTTP_SRV",
-            "properties": {
-              "description": "Port 80",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "80",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "10.10.4.0/24",
-              "access": "Allow",
-              "priority": 101,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "HTTPS_SRV",
-            "properties": {
-              "description": "Port 443",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "443",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "10.10.4.0/24",
-              "access": "Allow",
-              "priority": 102,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "8081_SRV",
-            "properties": {
-              "description": "Port 8081",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "8081",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "10.10.4.0/24",
-              "access": "Allow",
-              "priority": 103,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "3030_SRV",
-            "properties": {
-              "description": "Port 3030",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "3030",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "10.10.4.0/24",
-              "access": "Allow",
-              "priority": 104,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "30000_SRV",
-            "properties": {
-              "description": "Port 30000",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "30000",
-              "sourceAddressPrefix": "Internet",
-              "destinationAddressPrefix": "10.10.4.0/24",
-              "access": "Allow",
-              "priority": 105,
-              "direction": "Inbound"
-            }
-          }
-        ]
-      }
-    },
-    {
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[concat(parameters('ServerName'),parameters('PIPDef'))]",
       "apiVersion": "2015-05-01-preview",
@@ -149,33 +55,6 @@
         "dnsSettings": {
           "domainNameLabel": "[parameters('ServerName')]"
         }
-      }
-    },
-    {
-      "apiVersion": "2015-05-01-preview",
-      "type": "Microsoft.Network/virtualNetworks",
-      "name": "[concat(parameters('BaseName'),parameters('NETDef'))]",
-      "location": "[parameters('Location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/networkSecurityGroups/', variables('NSGid'))]"
-      ],
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[parameters('NETaddress')]"
-          ]
-        },
-        "subnets": [
-          {
-            "name": "[concat(parameters('BaseName'),'srv',parameters('SUBDef'))]",
-            "properties": {
-              "addressPrefix": "[parameters('SRVSubnet')]",
-              "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('NSGid'))]"
-              }
-            }
-          }
-        ]
       }
     },
     {
