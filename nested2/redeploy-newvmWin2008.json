@@ -5,6 +5,9 @@
     "ServerName": {
       "type": "string"
     },
+    "Confluence URL": {
+      "type": "string"
+    },
     "NICDef": {
       "type": "string"
     },
@@ -38,6 +41,9 @@
       "name": "[parameters('ServerName')]",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
+      "tags": {
+        "Confluence URL": "[parameters('Confluence URL')]"
+      },
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('Size')]"
