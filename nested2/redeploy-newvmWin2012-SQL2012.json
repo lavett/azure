@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "BaseSrvName": {
+    "ServerName": {
       "type": "string"
     },
     "NICDef": {
@@ -25,8 +25,8 @@
     }
   },
   "variables": {
-    "NICid": "[concat(parameters('BaseSrvName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('BaseSrvName'),parameters('SADef'))]",
+    "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
+    "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftSQLServer",
     "imageOffer": "SQL2012SP2-WS2012R2",
     "windowsOSVersion": "Standard",
@@ -35,7 +35,7 @@
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('BaseSrvName')]",
+      "name": "[parameters('ServerName')]",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
       "properties": {
@@ -43,7 +43,7 @@
           "vmSize": "[parameters('Size')]"
         },
         "osProfile": {
-          "computername": "[parameters('BaseSrvName')]",
+          "computername": "[parameters('ServerName')]",
           "adminUsername": "[parameters('Username')]",
           "adminPassword": "[parameters('Password')]"
         },

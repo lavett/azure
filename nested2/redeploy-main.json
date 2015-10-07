@@ -156,9 +156,6 @@
           "ServerName": {
             "value": "[parameters('ServerName')]"
           },
-          "BaseName": {
-            "value": "[variables('BaseName')]"
-          },
           "NICDef": {
             "value": "[variables('NICDef')]"
           },
