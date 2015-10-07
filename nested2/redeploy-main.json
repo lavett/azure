@@ -49,6 +49,13 @@
       "metadata": {
         "description": "The size and type for the VM."
       }
+    },
+    "Confluence URL": {
+      "type": "string",
+      "defaultValue": "https://confluence.atlassian.com/xyz/",
+      "metadata": {
+        "description": "Enter the URL in confluence for this server"
+      }
     }
   },
   "variables": {
@@ -158,6 +165,9 @@
         "parameters": {
           "ServerName": {
             "value": "[parameters('ServerName')]"
+          },
+          "Confluence URL": {
+            "value": "[parameters('Confluence URL')]"
           },
           "NICDef": {
             "value": "[variables('NICDef')]"
