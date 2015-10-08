@@ -32,7 +32,7 @@
     "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
-    "windowsOSVersion": "2012-Datacenter",
+    "windowsOSVersion": "2008-R2-SP1",
     "OSDiskName": "osdisk1"
   },
   "resources": [

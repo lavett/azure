@@ -5,9 +5,6 @@
     "ServerName": {
       "type": "string"
     },
-    "Confluence URL": {
-      "type": "string"
-    },
     "NICDef": {
       "type": "string"
     },
@@ -30,9 +27,9 @@
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
-    "imagePublisher": "MicrosoftWindowsServer",
-    "imageOffer": "WindowsServer",
-    "windowsOSVersion": "2012-Datacenter",
+    "imagePublisher": "MicrosoftVisualStudio",
+    "imageOffer": "Windows",
+    "windowsOSVersion": "8.1-Enterprise-N",
     "OSDiskName": "osdisk1"
   },
   "resources": [
