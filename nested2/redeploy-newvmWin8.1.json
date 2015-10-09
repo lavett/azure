@@ -5,6 +5,9 @@
     "ServerName": {
       "type": "string"
     },
+    "Confluence URL": {
+      "type": "string"
+    },
     "NICDef": {
       "type": "string"
     },
