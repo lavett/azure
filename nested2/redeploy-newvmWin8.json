@@ -51,19 +51,16 @@
           "adminPassword": "[parameters('Password')]"
         },
         "storageProfile": {
-          "imageReference": {
-            "publisher": "[variables('imagePublisher')]",
-            "offer": "[variables('imageOffer')]",
-            "sku": "[variables('windowsOSVersion')]",
-            "version": "latest"
-          },
           "osDisk": {
             "name": "osdisk",
+            "createOption": "FromImage",
+            "image": {
+              "uri": "https://ristosa.blob.core.windows.net/vhds/win8x64.vhd"
+            },
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },
-            "caching": "ReadWrite",
-            "createOption": "FromImage"
+            "caching": "ReadWrite"
           }
         },
         "networkProfile": {
