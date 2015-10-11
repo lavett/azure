@@ -56,14 +56,15 @@
         "storageProfile": {
           "osDisk": {
             "name": "osdisk",
+            "osType": "windows",
+            "caching": "ReadWrite",
             "createOption": "FromImage",
             "image": {
               "uri": "https://ristosa.blob.core.windows.net/vhds/win8x64.vhd"
             },
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
-            },
-            "caching": "ReadWrite"
+            }
           }
         },
         "networkProfile": {
