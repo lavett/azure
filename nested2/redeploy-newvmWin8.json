@@ -63,7 +63,7 @@
               "uri": "https://ristosa.blob.core.windows.net/vhds/win8x64.vhd"
             },
             "vhd": {
-              "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
+              "uri": "https://ristosa.blob.core.windows.net/vhds/osdisk.vhd"
             }
           }
         },
