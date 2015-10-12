@@ -63,7 +63,7 @@
               "uri": "https://ristosa.blob.core.windows.net/vhds/Windows2008Fullx86Ent.vhd"
             },
             "vhd": {
-              "uri": "[concat(https://ristosa.blob.core.windows.net/vhds/,parameters('ServerName'))]"
+              "uri": "[concat('https://ristosa.blob.core.windows.net/vhds/',parameters('ServerName'))]"
             }
           }
         },
