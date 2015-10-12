@@ -60,7 +60,7 @@
             "caching": "ReadWrite",
             "createOption": "FromImage",
             "image": {
-              "uri": "https://ristosa.blob.core.windows.net/vhds/win8x64.vhd"
+              "uri": "https://ristosa.blob.core.windows.net/vhds/Windows2008Fullx86Ent.vhd"
             },
             "vhd": {
               "uri": "https://ristosa.blob.core.windows.net/vhds/osdisk.vhd"
