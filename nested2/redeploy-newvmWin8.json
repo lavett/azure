@@ -52,8 +52,18 @@
         "osProfile": {
           "computername": "[parameters('ServerName')]",
           "adminUsername": "[parameters('Username')]",
-          "adminPassword": "[parameters('Password')]"
+          "adminPassword": "[parameters('Password')]",
+          "windowsConfiguration": {
+        "provisionVMAgent":true,
+        "additionalUnattendContent": {
+          "pass":"oobesystem",
+          "component":"Microsoft-Windows-Shell-Setup",
+          "settingName":"FirstLogonCommands|AutoLogon",
+          "content":"<XML unattend content>"
         },
+        "enableAutomaticUpdates":true
+      }
+    },
         "storageProfile": {
           "osDisk": {
             "name": "osdisk",
