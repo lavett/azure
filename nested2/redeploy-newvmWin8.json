@@ -2,6 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "BaseName": {
+      "type": "string"
+    },
     "ServerName": {
       "type": "string"
     },
@@ -29,11 +32,10 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
-    "imagePublisher": "MicrosoftVisualStudio",
-    "imageOffer": "Windows",
-    "windowsOSVersion": "8.1-Enterprise-N",
-    "VHDname": "https://ristosa.blob.core.windows.net/vhds/",
+    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
+    "DeployImage": "win8deployimage",
+    "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
+    "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
   },
   "resources": [
@@ -55,13 +57,7 @@
           "adminPassword": "[parameters('Password')]",
           "windowsConfiguration": {
         "provisionVMAgent":true,
-        "additionalUnattendContent": {
-          "pass":"oobesystem",
-          "component":"Microsoft-Windows-Shell-Setup",
-          "settingName":"FirstLogonCommands|AutoLogon",
-          "content":"<XML unattend content>"
-        },
-        "enableAutomaticUpdates":true
+        "enableAutomaticUpdates":false
       }
     },
         "storageProfile": {
@@ -71,10 +67,10 @@
             "caching": "ReadWrite",
             "createOption": "FromImage",
             "image": {
-              "uri": "https://ristosa.blob.core.windows.net/vhds/admin.vhd"
+              "uri": "[variables('VHDname')]"
             },
             "vhd": {
-              "uri": "[concat(variables('VHDname'),variables('OSdiskname'))]"
+              "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'))]"
             }
           }
         },
