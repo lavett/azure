@@ -34,7 +34,7 @@
     "imageOffer": "Windows",
     "windowsOSVersion": "8.1-Enterprise-N",
     "VHDname": "https://ristosa.blob.core.windows.net/vhds/",
-    "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
+    "OSdiskname": "[concat('win8deployimage','.vhd')]"
   },
   "resources": [
     {
