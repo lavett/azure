@@ -5,7 +5,7 @@
     "Customer": {
       "type": "String",
       "metadata": {
-        "description": "Prefix for the resources, Ex five letter customer name"
+        "description": "Prefix for the resources, Maximum of six lowercase letters"
       }
     },
     "Environment": {
@@ -20,7 +20,7 @@
         "prd"
       ],
       "metadata": {
-        "description": "Type of environment"
+        "description": "Type of environment for the customer"
       }
     },
     "Function": {
@@ -33,7 +33,7 @@
         "srv"
       ],
       "metadata": {
-        "description": "Type of function / application"
+        "description": "Type of function of the server"
       }
     },
     "Number": {
@@ -54,19 +54,19 @@
         "12"
       ],
       "metadata": {
-        "description": "Sequence number for the resource"
+        "description": "Sequence number for the server"
       }
     },
     "Username": {
       "type": "string",
       "metadata": {
-        "description": "Local root or administrator username"
+        "description": "Local Administrator username Should be your standard one"
       }
     },
     "Password": {
       "type": "securestring",
       "metadata": {
-        "description": "Password for the Virtual Machine. Must be at least 8 characters and one have at least one capital letter, one number and one special character"
+        "description": "Password for the local Administrator Must be at least 8 characters and one have at least one capital letter, one number and one special character"
       }
     },
     "Image": {
@@ -81,7 +81,7 @@
         "Win2012-SQL2016-Preview"
       ],
       "metadata": {
-        "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
+        "description": "The Windows and if choosen SQL version for the VM. This will pick a fully patched image of this given Windows version"
       }
     },
     "Size": {
@@ -93,7 +93,7 @@
         "Standard_D3"
       ],
       "metadata": {
-        "description": "The size and type for the VM."
+        "description": "The size and type for the VM. For sizes see https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/"
       }
     },
     "Documentation URL": {
