@@ -37,12 +37,12 @@
     }
   },
   "variables": {
-    "NETid": "[concat(parameters('BaseName'),parameters('NETDef'))]",
-    "NSGid": "[concat(parameters('BaseName'),parameters('NSGDef'))]",
+    "NETid": "[concat('pmcvrtsrv',parameters('NETDef'))]",
+    "NSGid": "[concat('pmcvrtsrv',parameters('NSGDef'))]",
     "PIPid": "[concat(parameters('ServerName'),parameters('PIPDef'))]",
     "VNETid": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'))]",
     "SUBRef": "[concat(variables('VNETid'),'/subnets/',variables('SUBid'))]",
-    "SUBid": "[concat(parameters('BaseName'),parameters('SUBDef'))]"
+    "SUBid": "[concat('pmcvrtsrv',parameters('SUBDef'))]"
   },
   "resources": [
     {
