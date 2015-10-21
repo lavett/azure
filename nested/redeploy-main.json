@@ -229,6 +229,9 @@
           "BaseSrvName": {
             "value": "[variables('BaseSrvName')]"
           },
+          "Documentation URL": {
+            "value": "[parameters('Documentation URL')]"
+          },
           "NICDef": {
             "value": "[variables('NICDef')]"
           },

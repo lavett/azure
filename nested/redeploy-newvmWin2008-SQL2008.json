@@ -5,6 +5,9 @@
     "BaseSrvName": {
       "type": "string"
     },
+    "Documentation URL": {
+      "type": "string"
+    },
     "NICDef": {
       "type": "string"
     },
@@ -38,6 +41,9 @@
       "name": "[parameters('BaseSrvName')]",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
+      "tags": {
+        "Documentation URL": "[parameters('Documentation URL')]"
+      },
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('Size')]"
