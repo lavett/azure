@@ -95,6 +95,13 @@
       "metadata": {
         "description": "The size and type for the VM."
       }
+    },
+    "Documentation URL": {
+      "type": "string",
+      "defaultValue": "https://document.html",
+      "metadata": {
+        "description": "Enter the documentation URL for this server"
+      }
     }
   },
   "variables": {

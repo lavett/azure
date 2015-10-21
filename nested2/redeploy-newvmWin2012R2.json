@@ -5,7 +5,7 @@
     "ServerName": {
       "type": "string"
     },
-    "Confluence URL": {
+    "Documentation URL": {
       "type": "string"
     },
     "NICDef": {
@@ -42,7 +42,7 @@
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
       "tags": {
-        "Confluence URL": "[parameters('Confluence URL')]"
+        "Documentation URL": "[parameters('Documentation URL')]"
       },
       "properties": {
         "hardwareProfile": {
