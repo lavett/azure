@@ -33,7 +33,7 @@
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
-    "DeployImage": "PMCVRTSRVDEV06FIXED",
+    "DeployImage": "PMCVRTSRVDEV06FIX",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'osdisk','.vhd')]"
