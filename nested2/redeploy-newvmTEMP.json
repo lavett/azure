@@ -66,9 +66,6 @@
             "osType": "windows",
             "caching": "ReadWrite",
             "createOption": "Attach",
-            "image": {
-              "uri": "[variables('VHDname')]"
-            },
             "vhd": {
               "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'))]"
             }
