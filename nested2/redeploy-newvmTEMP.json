@@ -67,7 +67,7 @@
             "caching": "ReadWrite",
             "createOption": "Attach",
             "vhd": {
-              "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'))]"
+              "uri": "[variables('VHDname')]"
             }
           }
         },
