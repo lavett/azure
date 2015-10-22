@@ -65,7 +65,7 @@
             "name": "osdisk",
             "osType": "windows",
             "caching": "ReadWrite",
-            "createOption": "FromImage",
+            "createOption": "Attach",
             "image": {
               "uri": "[variables('VHDname')]"
             },
