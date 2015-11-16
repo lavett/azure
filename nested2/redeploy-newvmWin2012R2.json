@@ -62,7 +62,7 @@
           },
           "osDisk": {
             "name": "osdisk",
-            "sizeOfDiskInGB": "1023",
+            "diskSizeGB": "1023",
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },
