@@ -74,6 +74,7 @@
             {
               "name": "datadisk1",
               "diskSizeGB": "1023",
+              "caching": "ReadOnly",
               "lun": 0,
               "vhd": {
                 "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DataDiskName'),'.vhd')]"
