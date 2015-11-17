@@ -33,13 +33,14 @@
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
-    "OSDiskName": "osdisk1"
+    "OSDiskName": "osdisk1",
+    "DataDiskName": "datadisk1"
   },
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('ServerName')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[parameters('Location')]",
       "tags": {
         "Documentation URL": "[parameters('Documentation URL')]"
@@ -69,6 +70,17 @@
             "createOption": "FromImage"
           }
         },
+        "dataDisks": [
+            {
+              "name": "datadisk1",
+              "diskSizeGB": "1023",
+              "lun": 0,
+              "vhd": {
+                "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DataDiskName'),'.vhd')]"
+              },
+              "createOption": "Empty"
+            }
+          ],
         "networkProfile": {
           "networkInterfaces": [
             {
