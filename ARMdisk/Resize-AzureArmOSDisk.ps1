@@ -6,8 +6,8 @@ This function is used to resize an existing data disk on an Azure ARM VM.
 It takes a PSVirtualMachine object as a parameter. The DiskIndex is the intended
 disk. Ranges 0 for the first, 1 for the second, and so on.
 .EXAMPLE
-To resize the size of the first available data disk to a size of 50 GB.
-Resize-KWAzureArmVMDisk -VM VMObject -DiskIndex 0 -DiskSizeInGB 50
+To resize the size of the first available data disk to a size of 1023 GB.
+Resize-AzureArmOSDisk -VM VMObject -DiskIndex 0 -DiskSizeInGB 1023
 #>
 function Resize-AzureArmOSDisk
 {
