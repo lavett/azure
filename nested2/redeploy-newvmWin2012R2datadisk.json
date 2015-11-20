@@ -33,7 +33,8 @@
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
-    "OSDiskName": "osdisk1"
+    "OSDiskName": "osdisk1",
+    "DataDiskName": "datadisk1"
   },
   "resources": [
     {
@@ -67,7 +68,19 @@
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
-          }
+          },
+        "dataDisks": [
+            {
+              "name": "datadisk1",
+              "diskSizeGB": "1023",
+              "caching": "ReadOnly",
+              "lun": "0",
+              "vhd": {
+                "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DataDiskName'),'.vhd')]"
+              },
+              "createOption": "Empty"
+            }
+          ]
         },
         "networkProfile": {
           "networkInterfaces": [
