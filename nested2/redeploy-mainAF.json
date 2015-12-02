@@ -142,12 +142,6 @@
           "Size": {
             "value": "[parameters('Size')]"
           },
-          "Username": {
-            "value": "[parameters('Username')]"
-          },
-          "Password": {
-            "value": "[parameters('Password')]"
-          },
           "Location": {
             "value": "[variables('Location')]"
           }

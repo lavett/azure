@@ -17,12 +17,6 @@
     "Size": {
       "type": "string"
     },
-    "Username": {
-      "type": "string"
-    },
-    "Password": {
-      "type": "string"
-    },
     "Location": {
       "type": "string"
     }
