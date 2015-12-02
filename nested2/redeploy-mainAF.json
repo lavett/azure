@@ -45,9 +45,9 @@
       "type": "string",
       "defaultValue": "Standard_D1",
       "allowedValues": [
-        "Standard_D1",
-        "Standard_D2",
-        "Standard_D3"
+        "Standard_DS1",
+        "Standard_DS2",
+        "Standard_DS3"
       ],
       "metadata": {
         "description": "The size and type for the VM. For sizes see https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/"
