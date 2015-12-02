@@ -30,7 +30,7 @@
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
-    "DeployImage": "PXWEB-PXWEB-os-1444304225826",
+    "DeployImage": "PXDATA-PXDATA-os-1444718991931",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]"
   },
   "resources": [
