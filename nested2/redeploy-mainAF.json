@@ -92,9 +92,6 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "BaseName": {
-            "value": "[variables('BaseName')]"
-          },
           "ServerName": {
             "value": "[parameters('ServerName')]"
           },
