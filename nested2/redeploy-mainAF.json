@@ -8,18 +8,6 @@
         "description": "Name of the server maximum of 15 letters"
       }
     },
-    "Username": {
-      "type": "string",
-      "metadata": {
-        "description": "Local Administrator username Should be your standard one"
-      }
-    },
-    "Password": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Password for the local Administrator Must be at least 8 characters and one have at least one capital letter, one number and one special character"
-      }
-    },
     "Image": {
       "type": "string",
       "defaultValue": "Win2012",
