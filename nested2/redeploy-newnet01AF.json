@@ -40,7 +40,7 @@
     "NETid": "VPN_AF_VNET",
     "NSGid": "[concat(parameters('ServerName'),parameters('NSGDef'))]",
     "PIPid": "[concat(parameters('ServerName'),parameters('PIPDef'))]",
-    "VNETid": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'))]",
+    "VNETid": "/subscriptions/b44875c8-2084-42b4-889d-d5f329c82f3e/resourceGroups/AF_VPN_RG/providers/Microsoft.Network/virtualNetworks/",
     "SUBRef": "[concat(variables('VNETid'),'/subnets/',variables('SUBid'))]",
     "SUBid": "Subnet01"
   },
