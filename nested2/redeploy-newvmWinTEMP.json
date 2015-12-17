@@ -34,12 +34,9 @@
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "DeployImage": "osdisk1",
-    "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/','backup','/','demoservice',variables('DeployImage'),'.vhd')]",
+    "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds/','backup/','demoservice/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
-    "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]",
-    "imagePublisher": "MicrosoftWindowsServer",
-    "imageOffer": "WindowsServer",
-    "windowsOSVersion": "2012-R2-Datacenter"
+    "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
   },
   "resources": [
     {
@@ -57,19 +54,18 @@
         "osProfile": {
           "computername": "[parameters('ServerName')]",
           "adminUsername": "[parameters('Username')]",
-          "adminPassword": "[parameters('Password')]"
+          "adminPassword": "[parameters('Password')]",
+          "windowsConfiguration": {
+        "provisionVMAgent":true,
+        "enableAutomaticUpdates":false
+      }
     },
         "storageProfile": {
-          "imageReference": {
-            "publisher": "[variables('imagePublisher')]",
-            "offer": "[variables('imageOffer')]",
-            "sku": "[variables('windowsOSVersion')]",
-            "version": "latest"
-          },
           "osDisk": {
             "name": "osdisk",
+            "osType": "windows",
             "caching": "ReadWrite",
-            "createOption": "FromImage",
+            "createOption": "Attach",
             "vhd": {
               "uri": "[variables('VHDname')]"
             }
