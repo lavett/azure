@@ -26,6 +26,7 @@
       "allowedValues": [
         "Win7",
         "Win8",
+        "WinTEMP",
         "Win8.1",
         "Win10",
         "Win2008R2",
