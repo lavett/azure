@@ -51,15 +51,6 @@
         "hardwareProfile": {
           "vmSize": "[parameters('Size')]"
         },
-        "osProfile": {
-          "computername": "[parameters('ServerName')]",
-          "adminUsername": "[parameters('Username')]",
-          "adminPassword": "[parameters('Password')]",
-          "windowsConfiguration": {
-        "provisionVMAgent":true,
-        "enableAutomaticUpdates":false
-      }
-    },
         "storageProfile": {
           "osDisk": {
             "name": "osdisk",
