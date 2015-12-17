@@ -32,7 +32,7 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
+    "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
     "DeployImage": "osdisk1",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/','backup','/','demoservice',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
@@ -66,9 +66,6 @@
             "osType": "windows",
             "caching": "ReadWrite",
             "createOption": "FromImage",
-            "image": {
-              "uri": "[variables('VHDname')]"
-            },
             "vhd": {
               "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'))]"
             }
