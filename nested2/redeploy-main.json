@@ -167,7 +167,7 @@
         },
         "parameters": {
           "BaseName": {
-            "value": "[parameters('BaseName')]"
+            "value": "[variables('BaseName')]"
           },
           "ServerName": {
             "value": "[parameters('ServerName')]"
