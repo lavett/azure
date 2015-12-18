@@ -1,0 +1,87 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "BaseName": {
+      "type": "string"
+    },
+    "ServerName": {
+      "type": "string"
+    },
+    "Documentation URL": {
+      "type": "string"
+    },
+    "NICDef": {
+      "type": "string"
+    },
+    "SADef": {
+      "type": "string"
+    },
+    "Size": {
+      "type": "string"
+    },
+    "Username": {
+      "type": "string"
+    },
+    "Password": {
+      "type": "string"
+    },
+    "Location": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
+    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
+    "DeployImage": "win8deployimage",
+    "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
+    "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
+    "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[parameters('ServerName')]",
+      "apiVersion": "2015-05-01-preview",
+      "location": "[parameters('Location')]",
+      "tags": {
+        "Documentation URL": "[parameters('Documentation URL')]"
+      },
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('Size')]"
+        },
+        "osProfile": {
+          "computername": "[parameters('ServerName')]",
+          "adminUsername": "[parameters('Username')]",
+          "adminPassword": "[parameters('Password')]",
+          "windowsConfiguration": {
+        "provisionVMAgent":true,
+        "enableAutomaticUpdates":false
+      }
+    },
+        "storageProfile": {
+          "osDisk": {
+            "name": "osdisk",
+            "osType": "windows",
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "image": {
+              "uri": "[variables('VHDname')]"
+            },
+            "vhd": {
+              "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'))]"
+            }
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('NICid'))]"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

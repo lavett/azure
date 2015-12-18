@@ -5,12 +5,6 @@
 4. Copy the vhd from the source VM to the destination SA for the new VM (easy with AzCopy)
 C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy> ./AzCopy.exe /Source:https://NAMEOFSOURCESA.blob.core.windows.net/vhds /Dest:https://NAMEOFDESTSA.blob.core.windows.net/vhds /SourceKey:SAKEY /DestKey:SAKEY /Pattern:NAMEOFOSDISK.vhd
 5. Open the portal and click "new" go through compute and below you should have deploy from template
-6. Paste in the code from redeploy-main.json in the edit template section. 
+6. Paste in the code from redeploy-main.json in the edit template section.
 7. Fill in the other information and click create.
 8. After the deployment is finished you should have a copy of your source server up and running.
-
-# Create an Image from the newly copied VM
-1. Log in to the new VM
-2. Run sysprep with OOBE, generalize and shutdown option
-3. Run stop from the azure portal on the VM
-4. 
