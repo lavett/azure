@@ -32,9 +32,9 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
+    "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
     "DeployImage": "osdisk1",
-    "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds/','backup/','demoservice/',variables('DeployImage'),'.vhd')]",
+    "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
   },
