@@ -33,7 +33,7 @@
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
-    "DeployImage": "win8deployimage",
+    "DeployImage": "osdisk",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
