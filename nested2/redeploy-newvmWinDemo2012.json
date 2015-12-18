@@ -35,7 +35,7 @@
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "DeployImage": "windemo2012image",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
-    "OSVHDname": "[concat('http://',variables('ServerName'),variables('SADef'),'.blob.core.windows.net/','vhds','/')]",
+    "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
   },
   "resources": [
