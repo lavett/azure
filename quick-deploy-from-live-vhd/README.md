@@ -8,3 +8,9 @@ C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy> ./AzCopy.exe /Source:https:/
 6. Paste in the code from redeploy-main.json in the edit template section. 
 7. Fill in the other information and click create.
 8. After the deployment is finished you should have a copy of your source server up and running.
+
+# Create an Image from the newly copied VM
+1. Log in to the new VM
+2. Run sysprep with OOBE, generalize and shutdown option
+3. Run stop from the azure portal on the VM
+4. 
