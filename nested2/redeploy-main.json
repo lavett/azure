@@ -26,12 +26,12 @@
       "allowedValues": [
         "Win7",
         "Win8",
-        "WinTEMP",
         "Win8.1",
         "Win10",
         "Win2008R2",
         "Win2012",
         "Win2012R2",
+        "WinDemo2012",
         "Win2016-Preview",
         "Win2012-SQL2012",
         "Win2012-SQL2014",
