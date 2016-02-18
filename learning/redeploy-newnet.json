@@ -86,7 +86,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PIPid'),copyIndex())]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(variables('PIPid'),copyIndex()))]"
               },
               "subnet": {
                 "id": "[variables('SUBRef')]"
