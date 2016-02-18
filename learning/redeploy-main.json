@@ -54,18 +54,16 @@
     "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/learning/",
     "TemplateBaseFile": "redeploy-new",
     "BaseName": "[resourceGroup().name]",
-    "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
-    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
     "NETAddress": "10.0.0.0/16",
     "SRVSubnet": "10.0.0.0/24",
-    "NETid": "[concat(parameters('BaseName'),parameters('NETDef'))]",
-    "NSGid": "[concat(parameters('BaseName'),parameters('NSGDef'))]",
-    "PIPid": "[concat(parameters('ServerName'),parameters('PIPDef'))]",
+    "NETid": "[concat(variables('BaseName'),variables('NETDef'))]",
+    "NSGid": "[concat(variables('BaseName'),variables('NSGDef'))]",
+    "PIPid": "[concat(parameters('ServerName'),variables('PIPDef'))]",
     "VNETid": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'))]",
     "SUBRef": "[concat(variables('VNETid'),'/subnets/',variables('SUBid'))]",
-    "SUBid": "[concat(parameters('BaseName'),parameters('SUBDef'))]",
-    "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
+    "SUBid": "[concat(variables('BaseName'),variables('SUBDef'))]",
+    "NICid": "[concat(parameters('ServerName'),variables('NICDef'))]",
+    "SAid": "[concat(variables('BaseName'),variables('SADef'))]",
     "DeployImage": "win2012deployimage",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
@@ -82,15 +80,15 @@
   "resources": [
     {
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[concat(parameters('ServerName'),parameters('PIPDef'),copyIndex())]",
+      "name": "[concat(parameters('ServerName'),variables('PIPDef'),copyIndex())]",
       "apiVersion": "2015-05-01-preview",
-      "location": "[parameters('Location')]",
+      "location": "[variables('Location')]",
       "copy": {
         "name": "publicIPLoop",
         "count": "[parameters('VMCount')]"
       },
       "properties": {
-        "publicIPAllocationMethod": "[parameters('PIPType')]",
+        "publicIPAllocationMethod": "[variables('PIPType')]",
         "dnsSettings": {
           "domainNameLabel": "[concat(parameters('ServerName'),copyIndex())]"
         }
@@ -99,8 +97,8 @@
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[concat(parameters('ServerName'),parameters('NICDef'),copyIndex())]",
-      "location": "[parameters('Location')]",
+      "name": "[concat(parameters('ServerName'),variables('NICDef'),copyIndex())]",
+      "location": "[variables('Location')]",
       "copy": {
        "name": "nicLoop",
        "count": "[parameters('VMCount')]"
@@ -129,13 +127,10 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(parameters('ServerName'),copyIndex())]",
       "apiVersion": "2015-05-01-preview",
-      "location": "[parameters('Location')]",
+      "location": "[variables('Location')]",
       "copy": {
         "name": "virtualMachineLoop",
         "count": "[parameters('VMCount')]"
-      },
-      "tags": {
-        "Documentation URL": "[parameters('Documentation URL')]"
       },
       "properties": {
         "hardwareProfile": {
