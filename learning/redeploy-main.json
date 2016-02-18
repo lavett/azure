@@ -11,7 +11,7 @@
     },
     "Amount": {
       "type": "int",
-      "defaultValue": 10,
+      "defaultValue": 5,
       "metadata": {
         "description": "Number of VMs to deploy"
       }
