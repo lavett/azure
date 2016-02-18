@@ -1,0 +1,169 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ServerName": {
+      "type": "String",
+      "defaultValue": "StudyServer",
+      "metadata": {
+        "description": "Name of the servers maximum of 15 letters"
+      }
+    },
+    "VMCount": {
+      "type": "int",
+      "defaultValue": 5,
+      "metadata": {
+        "description": "Number of VMs to deploy"
+      }
+    },
+    "Username": {
+      "type": "string",
+      "metadata": {
+        "description": "Local Administrator username, can not be Admin or Administrator"
+      }
+    },
+    "Password": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password for the local Administrator Must be at least 8 characters and one have at least one capital letter, one number and one special character"
+      }
+    },
+    "Image": {
+      "type": "string",
+      "defaultValue": "Win2012",
+      "allowedValues": [
+        "Win2012"
+      ],
+      "metadata": {
+        "description": "The Windows Image This will pick a fully patched image of this given Windows version"
+      }
+    },
+    "Size": {
+      "type": "string",
+      "defaultValue": "Standard_D11_v2",
+      "allowedValues": [
+        "Standard_D11_v2"
+      ],
+      "metadata": {
+        "description": "The size and type for the VM. For sizes see https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/"
+      }
+    }
+  },
+  "variables": {
+    "Location": "[resourceGroup().location]",
+    "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/learning/",
+    "TemplateBaseFile": "redeploy-new",
+    "BaseName": "[resourceGroup().name]",
+    "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
+    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
+    "NETAddress": "10.0.0.0/16",
+    "SRVSubnet": "10.0.0.0/24",
+    "PIPType": "Dynamic",
+    "VMDef": "vm",
+    "SADef": "sa",
+    "NETDef": "net",
+    "SUBDef": "sub",
+    "NICDef": "nic",
+    "PIPDef": "pip",
+    "NSGDef": "nsg"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-01-01",
+      "name": "newNET",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('NETFile')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "VMCount": {
+            "value": "[parameters('VMCount')]"
+          },
+          "BaseName": {
+            "value": "[variables('BaseName')]"
+          },
+          "ServerName": {
+            "value": "[parameters('ServerName')]"
+          },
+          "NSGDef": {
+            "value": "[variables('NSGDef')]"
+          },
+          "NETDef": {
+            "value": "[variables('NETDef')]"
+          },
+          "NICDef": {
+            "value": "[variables('NICDef')]"
+          },
+          "PIPDef": {
+            "value": "[variables('PIPDef')]"
+          },
+          "SUBDef": {
+            "value": "[variables('SUBDef')]"
+          },
+          "PIPType": {
+            "value": "[variables('PIPType')]"
+          },
+          "NETAddress": {
+            "value": "[variables('NETAddress')]"
+          },
+          "SRVsubnet": {
+            "value": "[variables('SRVsubnet')]"
+          },
+          "Location": {
+            "value": "[variables('Location')]"
+          }
+        }
+      }
+    },
+  {
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Resources/deployments/', 'newNET')]"
+      ],
+      "name": "newVM",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('VMFile')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "VMCount": {
+            "value": "[parameters('VMCount')]"
+          },
+          "BaseName": {
+            "value": "[variables('BaseName')]"
+          },
+          "ServerName": {
+            "value": "[parameters('ServerName')]"
+          },
+          "Documentation URL": {
+            "value": "[parameters('Documentation URL')]"
+          },
+          "NICDef": {
+            "value": "[variables('NICDef')]"
+          },
+          "SADef": {
+            "value": "[variables('SADef')]"
+          },
+          "Size": {
+            "value": "[parameters('Size')]"
+          },
+          "Username": {
+            "value": "[parameters('Username')]"
+          },
+          "Password": {
+            "value": "[parameters('Password')]"
+          },
+          "Location": {
+            "value": "[variables('Location')]"
+          }
+        }
+      }
+    }
+  ]
+}
