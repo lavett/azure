@@ -9,7 +9,7 @@
         "description": "Name of the servers maximum of 15 letters"
       }
     },
-    "Amount": {
+    "VMCount": {
       "type": "int",
       "defaultValue": "5",
       "metadata": {
@@ -79,8 +79,8 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "Amount": {
-            "value": "[parameters('Amount')]"
+          "VMCount": {
+            "value": "[parameters('VMCount')]"
           },
           "BaseName": {
             "value": "[variables('BaseName')]"
@@ -132,8 +132,8 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "Amount": {
-            "value": "[parameters('Amount')]"
+          "VMCount": {
+            "value": "[parameters('VMCount')]"
           },
           "BaseName": {
             "value": "[variables('BaseName')]"

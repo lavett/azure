@@ -2,16 +2,13 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "Amount": {
+    "VMCount": {
       "type": "String"
     },
     "BaseName": {
       "type": "String"
     },
     "ServerName": {
-      "type": "string"
-    },
-    "Amount": {
       "type": "string"
     },
     "NSGDef": {
@@ -58,7 +55,7 @@
       "location": "[parameters('Location')]",
       "copy": {
         "name": "publicIPLoop",
-        "count": "[parameters('Amount')]"
+        "count": "[parameters('VMCount')]"
       },
       "properties": {
         "publicIPAllocationMethod": "[parameters('PIPType')]",
@@ -74,7 +71,7 @@
       "location": "[parameters('Location')]",
       "copy": {
        "name": "nicLoop",
-       "count": "[parameters('Amount')]"
+       "count": "[parameters('VMCount')]"
      },
       "dependsOn": [
         "[concat('Microsoft.Network/publicIPAddresses/', variables('PIPid'),copyIndex())]"
