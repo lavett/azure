@@ -4,6 +4,7 @@
   "parameters": {
     "ServerName": {
       "type": "String",
+      "defaultValue": "StudyServer",
       "metadata": {
         "description": "Name of the servers maximum of 15 letters"
       }
