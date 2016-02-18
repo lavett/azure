@@ -133,7 +133,7 @@
         "count": "[parameters('VMCount')]"
       },
       "dependsOn": [
-        "[concat('Microsoft.Network/networkInterfaces/',variables('PIPid'),copyIndex())]"
+        "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('NICid'),copyindex()))]"
       ],
       "properties": {
         "hardwareProfile": {
