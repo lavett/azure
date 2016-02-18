@@ -132,6 +132,9 @@
         "name": "virtualMachineLoop",
         "count": "[parameters('VMCount')]"
       },
+      "dependsOn": [
+        "[concat('Microsoft.Network/networkInterfaces/',variables('PIPid'),copyIndex())]"
+      ],
       "properties": {
         "hardwareProfile": {
           "vmSize": "[parameters('Size')]"
