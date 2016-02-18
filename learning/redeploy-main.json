@@ -154,7 +154,7 @@
         "storageProfile": {
           "dataDisks": [
          {
-           "name": "[concat(variables('BaseName'),'datadisk')]",
+           "name": "[variables('Datadiskname')]",
            "lun": 0,
            "createOption": "FromImage",
            "image": {
@@ -166,7 +166,7 @@
          }
          ],
           "osDisk": {
-            "name": "osdisk",
+            "name": "[variables('OSdiskname')]",
             "osType": "windows",
             "caching": "ReadWrite",
             "createOption": "FromImage",
