@@ -11,7 +11,7 @@
     },
     "VMCount": {
       "type": "int",
-      "defaultValue": "5",
+      "defaultValue": 5,
       "metadata": {
         "description": "Number of VMs to deploy"
       }
