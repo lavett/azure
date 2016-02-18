@@ -64,7 +64,7 @@
     "SUBid": "[concat(variables('BaseName'),variables('SUBDef'))]",
     "NICid": "[concat(parameters('ServerName'),variables('NICDef'))]",
     "SAid": "[concat(variables('BaseName'),variables('SADef'))]",
-    "DeployImage": "win2012deployimage",
+    "DeployImage": "windemo2012image",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[parameters('ServerName')]",
