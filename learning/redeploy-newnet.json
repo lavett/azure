@@ -8,6 +8,9 @@
     "ProjectName": {
       "type": "string"
     },
+    "Amount": {
+      "type": "string"
+    },
     "NSGDef": {
       "type": "string"
     },
@@ -47,23 +50,31 @@
   "resources": [
     {
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[concat(parameters('ProjectName'),parameters('PIPDef'))]",
+      "name": "[concat(parameters('ProjectName'),parameters('PIPDef'),copyIndex())]",
       "apiVersion": "2015-05-01-preview",
       "location": "[parameters('Location')]",
+      "copy": {
+        "name": "publicIPLoop",
+        "count": "[parameters('Amount')]"
+      },
       "properties": {
         "publicIPAllocationMethod": "[parameters('PIPType')]",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('ProjectName')]"
+          "domainNameLabel": "[concat(parameters('ProjectName'),copyIndex())]"
         }
       }
     },
     {
       "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[concat(parameters('ProjectName'),parameters('NICDef'))]",
+      "name": "[concat(parameters('ProjectName'),parameters('NICDef'),copyIndex())]",
       "location": "[parameters('Location')]",
+      "copy": {
+       "name": "nicLoop",
+       "count": "[parameters('Amount')]"
+     },
       "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', variables('PIPid'))]"
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('PIPid'),copyIndex())]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -72,7 +83,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PIPid'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PIPid'),copyIndex())]"
               },
               "subnet": {
                 "id": "[variables('SUBRef')]"

@@ -8,6 +8,13 @@
         "description": "Name of the project maximum of 15 letters"
       }
     },
+    "Amount": {
+      "type": "int",
+      "defaultValue": 10,
+      "metadata": {
+        "description": "Number of VMs to deploy"
+      }
+    },
     "Username": {
       "type": "string",
       "metadata": {
