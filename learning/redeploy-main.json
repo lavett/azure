@@ -2,10 +2,10 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ServerName": {
+    "ProjectName": {
       "type": "String",
       "metadata": {
-        "description": "Name of the server maximum of 15 letters"
+        "description": "Name of the project maximum of 15 letters"
       }
     },
     "Username": {
@@ -24,46 +24,26 @@
       "type": "string",
       "defaultValue": "Win2012",
       "allowedValues": [
-        "Win7",
-        "Win8",
-        "Win8.1",
-        "Win10",
-        "Win2008R2",
-        "Win2012",
-        "Win2012R2",
-        "WinDemo2012",
-        "Win2016-Preview",
-        "Win2012-SQL2012",
-        "Win2012-SQL2014",
-        "Win2012-SQL2016-Preview"
+        "Win2012"
       ],
       "metadata": {
-        "description": "The Windows and if choosen SQL version for the VM. This will pick a fully patched image of this given Windows version"
+        "description": "The Windows Image This will pick a fully patched image of this given Windows version"
       }
     },
     "Size": {
       "type": "string",
-      "defaultValue": "Standard_D1",
+      "defaultValue": "Standard_D11_v2",
       "allowedValues": [
-        "Standard_D1",
-        "Standard_D2",
-        "Standard_D3"
+        "Standard_D11_v2"
       ],
       "metadata": {
         "description": "The size and type for the VM. For sizes see https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/"
-      }
-    },
-    "Documentation URL": {
-      "type": "string",
-      "defaultValue": "https://document.html",
-      "metadata": {
-        "description": "Enter the documentation URL for this server"
       }
     }
   },
   "variables": {
     "Location": "[resourceGroup().location]",
-    "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/nested2/",
+    "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/learning/",
     "TemplateBaseFile": "redeploy-new",
     "BaseName": "[resourceGroup().name]",
     "SAFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('SADef'),'.json')]",
@@ -83,29 +63,6 @@
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "newSA",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('SAFile')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "ServerName": {
-            "value": "[parameters('ServerName')]"
-          },
-          "SADef": {
-            "value": "[variables('SADef')]"
-          },
-          "Location": {
-            "value": "[variables('Location')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
       "name": "newNET",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -118,8 +75,8 @@
           "BaseName": {
             "value": "[variables('BaseName')]"
           },
-          "ServerName": {
-            "value": "[parameters('ServerName')]"
+          "ProjectName": {
+            "value": "[parameters('ProjectName')]"
           },
           "NSGDef": {
             "value": "[variables('NSGDef')]"
@@ -154,8 +111,7 @@
   {
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'newNET')]",
-        "[concat('Microsoft.Resources/deployments/', 'newSA')]"
+        "[concat('Microsoft.Resources/deployments/', 'newNET')]"
       ],
       "name": "newVM",
       "type": "Microsoft.Resources/deployments",
@@ -169,7 +125,7 @@
           "BaseName": {
             "value": "[variables('BaseName')]"
           },
-          "ServerName": {
+          "ProjectName": {
             "value": "[parameters('ServerName')]"
           },
           "Documentation URL": {
