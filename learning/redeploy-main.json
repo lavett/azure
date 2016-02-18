@@ -2,10 +2,10 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "ProjectName": {
+    "ServerName": {
       "type": "String",
       "metadata": {
-        "description": "Name of the project maximum of 15 letters"
+        "description": "Name of the servers maximum of 15 letters"
       }
     },
     "Amount": {
@@ -18,7 +18,7 @@
     "Username": {
       "type": "string",
       "metadata": {
-        "description": "Local Administrator username Should be your standard one"
+        "description": "Local Administrator username, can not be Admin or Administrator"
       }
     },
     "Password": {
@@ -53,11 +53,10 @@
     "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/learning/",
     "TemplateBaseFile": "redeploy-new",
     "BaseName": "[resourceGroup().name]",
-    "SAFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('SADef'),'.json')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
-    "NETAddress": "10.10.0.0/16",
-    "SRVSubnet": "10.10.1.0/24",
+    "NETAddress": "10.0.0.0/16",
+    "SRVSubnet": "10.0.0.0/24",
     "PIPType": "Dynamic",
     "VMDef": "vm",
     "SADef": "sa",
@@ -79,11 +78,14 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
+          "Amount": {
+            "value": "[variables('Amount')]"
+          },
           "BaseName": {
             "value": "[variables('BaseName')]"
           },
-          "ProjectName": {
-            "value": "[parameters('ProjectName')]"
+          "ServerName": {
+            "value": "[parameters('ServerName')]"
           },
           "NSGDef": {
             "value": "[variables('NSGDef')]"
@@ -129,10 +131,13 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
+          "Amount": {
+            "value": "[variables('Amount')]"
+          },
           "BaseName": {
             "value": "[variables('BaseName')]"
           },
-          "ProjectName": {
+          "ServerName": {
             "value": "[parameters('ServerName')]"
           },
           "Documentation URL": {

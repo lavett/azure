@@ -2,6 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "Amount": {
+      "type": "String"
+    },
     "BaseName": {
       "type": "string"
     },
@@ -36,7 +39,7 @@
     "DeployImage": "win2012deployimage",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "OSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
-    "OSdiskname": "[concat(parameters('ServerName'),'.vhd')]"
+    "OSdiskname": "[parameters('ServerName')]"
   },
   "resources": [
     {
@@ -74,7 +77,7 @@
               "uri": "[variables('VHDname')]"
             },
             "vhd": {
-              "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'),copyIndex())]"
+              "uri": "[concat(variables('OSVHDname'),variables('OSdiskname'),copyIndex(),'.vhd')]"
             }
           }
         },
