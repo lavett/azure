@@ -80,7 +80,7 @@
         },
         "parameters": {
           "Amount": {
-            "value": "[variables('Amount')]"
+            "value": "[parameters('Amount')]"
           },
           "BaseName": {
             "value": "[variables('BaseName')]"
@@ -133,7 +133,7 @@
         },
         "parameters": {
           "Amount": {
-            "value": "[variables('Amount')]"
+            "value": "[parameters('Amount')]"
           },
           "BaseName": {
             "value": "[variables('BaseName')]"
