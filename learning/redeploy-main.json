@@ -4,9 +4,9 @@
   "parameters": {
     "ServerName": {
       "type": "String",
-      "defaultValue": "StudyServer",
+      "defaultValue": "studyvm",
       "metadata": {
-        "description": "Name of the servers maximum of 15 letters"
+        "description": "Name of the servers maximum of 13 letters all lowercase"
       }
     },
     "VMCount": {
