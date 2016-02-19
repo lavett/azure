@@ -66,8 +66,6 @@
   "variables": {
     "Location": "[resourceGroup().location]",
     "CustName": "risto",
-    "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/learning/",
-    "TemplateBaseFile": "redeploy-new",
     "BaseName": "[resourceGroup().name]",
     "NETAddress": "10.0.0.0/16",
     "SRVSubnet": "10.0.0.0/24",
