@@ -84,23 +84,23 @@
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[concat(variables('BaseName'),variables('SADef'))]",
     "apiVersion": "2015-05-01-preview",
-    "location": "[parameters('Location')]",
+    "location": "[variables('Location')]",
     "properties": {
-      "accountType": "[parameters('SAType')]"
+      "accountType": "[variables('SAType')]"
     }
   },
   {
     "apiVersion": "2015-05-01-preview",
     "type": "Microsoft.Network/virtualNetworks",
-    "name": "[concat(parameters('BaseName'),parameters('NETDef'))]",
-    "location": "[parameters('Location')]",
+    "name": "[concat(variables('BaseName'),variables('NETDef'))]",
+    "location": "[variables('Location')]",
     "dependsOn": [
       "[concat('Microsoft.Network/networkSecurityGroups/', variables('NSGid'))]"
     ],
     "properties": {
       "addressSpace": {
         "addressPrefixes": [
-          "[parameters('NETaddress')]"
+          "[variables('NETaddress')]"
         ]
       },
       "subnets": [
@@ -112,7 +112,7 @@
               "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('NSGid'))]"
             }
           }
-        },
+        }
       ]
     }
   },
@@ -196,7 +196,7 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('NICid'),copyindex()))]",
-        "[resourceId('Microsoft.Storage/storageAccounts',concat(parameters('ServerName'),variables('SADef'))]"
+        "[resourceId('Microsoft.Storage/storageAccounts',concat(variables('BaseName'),variables('SADef'))]"
       ],
       "properties": {
         "hardwareProfile": {
