@@ -65,7 +65,7 @@
   },
   "variables": {
     "Location": "[resourceGroup().location]",
-    "CustName": "risto",
+    "CustName": "academy",
     "BaseName": "[resourceGroup().name]",
     "NETAddress": "10.0.0.0/16",
     "SRVSubnet": "10.0.0.0/24",
@@ -78,7 +78,7 @@
     "NICid": "[concat(parameters('ServerName'),variables('NICDef'))]",
     "SAid": "[concat(variables('CustName'),parameters('Region'),variables('SADef'))]",
     "SAType": "Standard_LRS",
-    "DeployImage": "windemo2012image",
+    "DeployImage": "academy",
     "DeployOSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vms','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'osdisk')]",
