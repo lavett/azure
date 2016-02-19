@@ -65,12 +65,9 @@
     "NICid": "[concat(parameters('ServerName'),variables('NICDef'))]",
     "SAid": "[concat(variables('BaseName'),variables('SADef'))]",
     "DeployImage": "windemo2012image",
-    "DataImage": "windemo2012image",
     "DeployOSVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DeployImage'),'.vhd')]",
-    "DeployDataVHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('DataImage'),'.vhd')]",
     "VHDname": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/')]",
     "OSdiskname": "[concat(parameters('ServerName'),'osdisk')]",
-    "Datadiskname": "[concat(parameters('ServerName'),'datadisk')]",
     "PIPType": "Dynamic",
     "VMDef": "vm",
     "SADef": "sa",
@@ -152,19 +149,6 @@
       }
     },
         "storageProfile": {
-          "dataDisks": [
-         {
-           "name": "[variables('Datadiskname')]",
-           "lun": 0,
-           "createOption": "FromImage",
-           "image": {
-             "uri": "[variables('DeployDataVHDname')]"
-           },
-           "vhd": {
-             "uri": "[concat(variables('VHDname'),variables('Datadiskname'),copyIndex(),'.vhd')]"
-           }
-         }
-         ],
           "osDisk": {
             "name": "[variables('OSdiskname')]",
             "osType": "windows",
