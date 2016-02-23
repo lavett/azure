@@ -4,18 +4,17 @@ param (
         [string]
         $CredStuff
     )
+mkdir c:\temp
 $CredsPath = "c:\temp\"
 $marsurl = "http://aka.ms/azurebackup_agent"
 $marsfile = "MARSAgentInstaller.exe"
-$marsagent = Invoke-WebRequest -Uri $marsurl | Out-File $CredsPath + $marsfile
-$CredsPath = "c:\temp\"
-mkdir c:\temp
+Invoke-WebRequest -Uri $marsurl | Out-File $CredsPath + $marsfile
 $SplitCredStuff = $CredStuff -split ';',2
 $credsfilename = Invoke-WebRequest -Uri $SplitCredStuff[0] | Out-File c:\temp\$($SplitCredStuff[1])
 $cred = $credspath + $credsfilename
 
 # Install Mars Agent
-$marsagent /q
+$CredsPath + $marsfile /q
 # Register VM to Vault
 Start-OBRegistration -VaultCredentials $cred -Confirm:$false
 # Set no proxy
