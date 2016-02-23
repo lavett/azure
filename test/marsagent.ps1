@@ -14,7 +14,7 @@ $credsfilename = Invoke-WebRequest -Uri $SplitCredStuff[0] | Out-File c:\temp\$(
 $cred = $credspath + $credsfilename
 
 # Install Mars Agent
-$CredsPath + $marsfile /q
+c:\temp\MARSAgenInstaller.exe /q
 # Register VM to Vault
 Start-OBRegistration -VaultCredentials $cred -Confirm:$false
 # Set no proxy
