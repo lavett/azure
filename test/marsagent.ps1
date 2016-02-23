@@ -13,6 +13,7 @@ Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\temp\MARSAgen
 $SplitCredStuff = $CredStuff -split ';'
 $credsfilename = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\temp\$($SplitCredStuff[1])
 $cred = $credspath + $credsfilename
+start-sleep -s 120
 
 # Install Mars Agent
 C:\temp\MARSAgenInstaller.exe /q
