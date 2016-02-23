@@ -15,8 +15,8 @@ $credsfilename = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\temp\$($S
 $cred = $credspath + $credsfilename
 
 # Install Mars Agent
-Start-Process "c:\temp\MARSAgenInstaller.exe" -ArgumentList "/q" -Wait
-#start-sleep -s 120
+'c:\temp\MARSAgenInstaller.exe /q'
+start-sleep -s 120
 import-module MSOnlineBackup
 # Register VM to Vault
 Start-OBRegistration -VaultCredentials $cred -Confirm:$false
