@@ -10,8 +10,8 @@ $marsurl = "http://aka.ms/azurebackup_agent"
 $marsfile = "MARSAgentInstaller.exe"
 #Invoke-WebRequest -Uri $marsurl -OutFile $CredsPath + $marsfile
 Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\temp\MARSAgentInstaller.exe
-$SplitCredStuff = $CredStuff -split ';',2
-$credsfilename = Invoke-WebRequest -Uri $SplitCredStuff[0]  -OutFile $CredsPath + $SplitCredStuff[1]
+$SplitCredStuff = $CredStuff -split ';'
+$credsfilename = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\temp\$($SplitCredStuff[1])
 $cred = $credspath + $credsfilename
 
 # Install Mars Agent
