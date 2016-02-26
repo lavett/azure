@@ -10,15 +10,15 @@ $marsurl = "http://aka.ms/azurebackup_agent"
 $marsfile = "MARSAgentInstaller.exe"
 #Invoke-WebRequest -Uri $marsurl -OutFile $CredsPath + $marsfile
 Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\temp\MARSAgentInstaller.exe
-$SplitCredStuff = $CredStuff -split ';'
-$credsfilename2 = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\temp\bvcred.txt
+#$SplitCredStuff = $CredStuff -split ';'
+#$credsfilename2 = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\temp\bvcred.txt
 
 # Install Mars Agent
-Start-Process -FilePath "C:\temp\MARSAgentInstaller.exe" -ArgumentList "/q"
-start-sleep 30
+#Start-Process -FilePath "C:\temp\MARSAgentInstaller.exe" -ArgumentList "/q"
+#start-sleep 30
 import-module MSOnlineBackup
 # Register VM to Vault
-Start-OBRegistration -VaultCredentials c:\temp\bvcred.txt -Confirm:$false
+Start-OBRegistration -VaultCredentials $CredStuff -Confirm:$false
 # Set no proxy
 Set-OBMachineSetting -NoProxy
 # Se no bandwidth limit
