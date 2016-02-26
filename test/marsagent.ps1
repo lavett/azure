@@ -5,6 +5,8 @@ param (
         $CredStuff
     )
 mkdir c:\temp
+$CredWriteFile = $CredStuff | Add-Content -Path c:\temp\bvkey.VaultCredentials
+$CredFile = "c:\temp\bvkey.VaultCredentials"
 $CredsPath = "c:\temp\"
 $marsurl = "http://aka.ms/azurebackup_agent"
 $marsfile = "MARSAgentInstaller.exe"
@@ -18,7 +20,7 @@ Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\temp\MARSAgen
 #start-sleep 30
 import-module MSOnlineBackup
 # Register VM to Vault
-Start-OBRegistration -VaultCredentials $CredStuff -Confirm:$false
+Start-OBRegistration -VaultCredentials $CredFile -Confirm:$false
 # Set no proxy
 Set-OBMachineSetting -NoProxy
 # Se no bandwidth limit
