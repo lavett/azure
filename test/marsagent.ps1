@@ -4,20 +4,15 @@ param (
         [string]
         $CredStuff
     )
-mkdir c:\temp
-$CredWriteFile = $CredStuff | Add-Content -Path c:\temp\bvkey.VaultCredentials
-$CredFile = "c:\temp\bvkey.VaultCredentials"
-$CredsPath = "c:\temp\"
-$marsurl = "http://aka.ms/azurebackup_agent"
-$marsfile = "MARSAgentInstaller.exe"
-#Invoke-WebRequest -Uri $marsurl -OutFile $CredsPath + $marsfile
-Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\temp\MARSAgentInstaller.exe
-#$SplitCredStuff = $CredStuff -split ';'
-#$credsfilename2 = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\temp\bvcred.txt
+mkdir c:\bvtemp
+$CredWriteFile = $CredStuff | Add-Content -Path c:\bvtemp\bvkey.VaultCredentials
+$CredFile = "c:\bvtemp\bvkey.VaultCredentials"
+
+Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\bvtemp\MARSAgentInstaller.exe
 
 # Install Mars Agent
-#Start-Process -FilePath "C:\temp\MARSAgentInstaller.exe" -ArgumentList "/q"
-#start-sleep 30
+Start-Process -FilePath "C:\bvtemp\MARSAgentInstaller.exe" -ArgumentList "/q"
+start-sleep 30
 import-module MSOnlineBackup
 # Register VM to Vault
 Start-OBRegistration -VaultCredentials $CredFile -Confirm:$false
@@ -49,4 +44,4 @@ Get-OBPolicy | Start-OBBackup
 
 
 
-#Remove-Item -Recurse -Force c:\temp
+Remove-Item -Recurse -Force c:\bvtemp
