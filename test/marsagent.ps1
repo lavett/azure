@@ -16,7 +16,7 @@ $cred = $credspath + $credsfilename
 start-sleep -s 120
 
 # Install Mars Agent
-C:\temp\MARSAgenInstaller.exe /q
+C:\temp\MARSAgenInstaller.exe /q /nu
 start-sleep -s 120
 import-module MSOnlineBackup
 # Register VM to Vault
@@ -42,10 +42,10 @@ Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
 # Remove old policies of the VM and Apply the policy
 Get-OBPolicy | Remove-OBPolicy -Confirm:$false
 Set-OBPolicy -Policy $newpolicy -Confirm:$false
-# Start a manual backup 
+# Start a manual backup
 Get-OBPolicy | Start-OBBackup
 
-   
+
 
 
 
