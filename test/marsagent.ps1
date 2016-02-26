@@ -16,7 +16,7 @@ $cred = $credspath + $credsfilename
 
 # Install Mars Agent
 Start-Process -FilePath "C:\temp\MARSAgentInstaller.exe" -ArgumentList "/q"
-start-sleep 180
+start-sleep 60
 import-module MSOnlineBackup
 # Register VM to Vault
 Start-OBRegistration -VaultCredentials $cred -Confirm:$false
