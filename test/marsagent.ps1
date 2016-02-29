@@ -6,9 +6,10 @@ param (
 $CredsPath = "c:\bvtemp\"
 mkdir $CredsPath
 $SplitCredStuff = $CredStuff -split ';',2
-Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\bvtemp\$($SplitCredStuff[1])
+$CredsFileName = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\bvtemp\$($SplitCredStuff[1])
 #$CredWriteFile = $CredStuff | Add-Content -Path c:\bvtemp\bvkey.VaultCredentials
 $CredFile = c:\bvtemp\$($SplitCredStuff[1])
+$cred = $credspath + $credsfilename
 
 Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\bvtemp\MARSAgentInstaller.exe
 
@@ -17,7 +18,7 @@ Start-Process -FilePath "C:\bvtemp\MARSAgentInstaller.exe" -ArgumentList "/q"
 start-sleep 30
 import-module MSOnlineBackup
 # Register VM to Vault
-Start-OBRegistration -VaultCredentials $CredFile -Confirm:$false
+Start-OBRegistration -VaultCredentials $cred -Confirm:$false
 # Set no proxy
 Set-OBMachineSetting -NoProxy
 # Se no bandwidth limit
