@@ -7,7 +7,7 @@ param (
 		$CredsPath = "c:\bvtemp\"
 		$CredsName = "bvkey.VaultCredentials"
 		mkdir $CredsPath
-		$SplitCredStuff = $CredStuff -split ';',2
+		$SplitCredStuff = $CredStuff -split ';'
 		$GetCreds = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile "$CredsPath$CredsName"
 		$BVString = $SplitCredStuff[2]
 		$CredsFileName = "$CredsPath$CredsName"
