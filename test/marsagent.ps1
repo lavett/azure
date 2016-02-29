@@ -36,17 +36,12 @@ param (
 		Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
 		# Exclude and/or include files and directories
 		$inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
-		$exclusions = New-OBFileSpec -FileSpec @("C:\windows", "C:\temp") -Exclude
+		#$exclusions = New-OBFileSpec -FileSpec @("C:\windows") -Exclude
 		Add-OBFileSpec -Policy $newpolicy -FileSpec $inclusions
-		Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
+		#Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
 		# Remove old policies of the VM and Apply the policy
-		Get-OBPolicy | Remove-OBPolicy -Confirm:$false
+		#Get-OBPolicy | Remove-OBPolicy -Confirm:$false
 		Set-OBPolicy -Policy $newpolicy -Confirm:$false
 		# Start a manual backup
 		Get-OBPolicy | Start-OBBackup
-
-
-
-
-
-		#Remove-Item -Recurse -Force c:\bvtemp
+		Remove-Item -Recurse -Force $CredsPath
