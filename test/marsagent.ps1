@@ -15,8 +15,8 @@ Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\bvtemp\MARSAg
 
 # Install Mars Agent
 Start-Process -FilePath "C:\bvtemp\MARSAgentInstaller.exe" -ArgumentList "/q"
-start-sleep 90
-import-module MSOnlineBackup
+start-sleep 30
+import-module "C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup"
 # Register VM to Vault
 Start-OBRegistration -VaultCredentials $cred -Confirm:$false
 # Set no proxy
