@@ -43,6 +43,7 @@ param (
 		# Remove old policies of the VM and Apply the policy
 		#Get-OBPolicy | Remove-OBPolicy -Confirm:$false
 		Set-OBPolicy -Policy $newpolicy -Confirm:$false
+		# Remove CredStuff
+		Remove-Item -Recurse -Force $CredsPath
 		# Start a manual backup
 		Get-OBPolicy | Start-OBBackup
-		Remove-Item -Recurse -Force $CredsPath
