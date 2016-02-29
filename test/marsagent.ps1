@@ -36,7 +36,7 @@ param (
 		$retentionpolicy = New-OBRetentionPolicy -RetentionDays 31
 		Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
 		# Exclude and/or include files and directories
-		$inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
+		$inclusions = New-OBFileSpec -FileSpec @("C:\Packages", "D:\")
 		#$exclusions = New-OBFileSpec -FileSpec @("C:\windows") -Exclude
 		Add-OBFileSpec -Policy $newpolicy -FileSpec $inclusions
 		#Add-OBFileSpec -Policy $newpolicy -FileSpec $exclusions
@@ -44,5 +44,5 @@ param (
 		#Get-OBPolicy | Remove-OBPolicy -Confirm:$false
 		Set-OBPolicy -Policy $newpolicy -Confirm:$false
 		# Start a manual backup
-		#Get-OBPolicy | Start-OBBackup
+		Get-OBPolicy | Start-OBBackup
 		Remove-Item -Recurse -Force $CredsPath
