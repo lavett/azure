@@ -3,9 +3,12 @@ param (
         [string]
         $CredStuff
     )
-mkdir c:\bvtemp
-$CredWriteFile = $CredStuff | Add-Content -Path c:\bvtemp\bvkey.VaultCredentials
-$CredFile = "c:\bvtemp\bvkey.VaultCredentials"
+$CredsPath = "c:\bvtemp\"
+mkdir $CredsPath
+$SplitCredStuff = $CredStuff -split ';',2
+Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile c:\bvtemp\$($SplitCredStuff[1])
+#$CredWriteFile = $CredStuff | Add-Content -Path c:\bvtemp\bvkey.VaultCredentials
+$CredFile = c:\bvtemp\$($SplitCredStuff[1])
 
 Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile c:\bvtemp\MARSAgentInstaller.exe
 
