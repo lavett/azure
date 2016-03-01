@@ -18,7 +18,7 @@ param (
 
 		# Install Mars Agent
 		Start-Process -FilePath "C:\bvtemp\MARSAgentInstaller.exe" -ArgumentList "/q"
-		start-sleep 30
+		start-sleep 60
 		import-module "C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup"
 		# Register VM to Vault
 		Start-OBRegistration -VaultCredentials $CredsFileName -Confirm:$false
