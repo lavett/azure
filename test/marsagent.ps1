@@ -6,7 +6,7 @@ param (
 
 		$CredsPath = "C:\bvtemp\"
 		$CredsName = "bvtemp.VaultCredentials"
-		$CredsFileName = "$CredsPath$CredsName"
+		$CredsFileName = $CredsPath$CredsName
 		$MarsFile = $CredsPath+"MARSAgentInstaller.exe"
 		mkdir $CredsPath
 		$SplitCredStuff = $CredStuff -split ';'
