@@ -13,6 +13,7 @@ param (
 		$GetCreds = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile $CredsFileName
 		$BVString = $SplitCredStuff[2]
 
+
 		#$CredWriteFile = $CredStuff | Add-Content -Path c:\bvtemp\bvkey.VaultCredentials
 		#$CredFile = c:\bvtemp\$($SplitCredStuff[1])
 
@@ -29,7 +30,7 @@ param (
 		# Se no bandwidth limit
 		Set-OBMachineSetting -NoThrottle
 		# Set Encryption Passphrase
-		ConvertTo-SecureString -String $BVString -AsPlainText -Force | Set-OBMachineSetting
+		ConvertTo-SecureString -String "337fff6b-bd5a-4504-a13d-6ce07da5344f" -AsPlainText -Force | Set-OBMachineSetting
 		# Create new policy and schedule
 		$newpolicy = New-OBPolicy
 		$sched = New-OBSchedule -DaysofWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesofDay 01:00
