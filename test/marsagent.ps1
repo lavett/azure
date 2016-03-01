@@ -13,10 +13,8 @@ param (
 		$GetCreds = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile $CredsFileName
 		$BVString = $SplitCredStuff[2]
 
-
-		Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile $MarsFile
-
 		# Install Mars Agent
+		Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile $MarsFile
 		Start-Process -FilePath $MarsFile -ArgumentList "/q"
 		start-sleep 30
 		import-module "C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup"
