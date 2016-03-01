@@ -4,21 +4,22 @@ param (
         $CredStuff
     )
 
-		$CredsPath = "c:\bvtemp\"
-		$CredsName = "bvkey.VaultCredentials"
-		$MarsFile = "MARSAgentInstaller.exe"
+		$CredsPath = "C:\bvtemp\"
+		$CredsName = "bvtemp.VaultCredentials"
+		$CredsFileName = "$CredsPath$CredsName"
+		$MarsFile = "$CredsPath+MARSAgentInstaller.exe"
 		mkdir $CredsPath
 		$SplitCredStuff = $CredStuff -split ';'
-		$GetCreds = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile "$CredsPath$CredsName"
+		$GetCreds = Invoke-WebRequest -Uri $SplitCredStuff[0] -OutFile $CredsFileName
 		$BVString = $SplitCredStuff[2]
-		$CredsFileName = "$CredsPath$CredsName"
+
 		#$CredWriteFile = $CredStuff | Add-Content -Path c:\bvtemp\bvkey.VaultCredentials
 		#$CredFile = c:\bvtemp\$($SplitCredStuff[1])
 
-		Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile $CredsPath$MarsFile
+		Invoke-WebRequest -Uri http://aka.ms/azurebackup_agent -outfile $MarsFile
 
 		# Install Mars Agent
-		$CredsPath$MarsFile /q
+		$MarsFile /q
 		start-sleep 60
 		import-module "C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup"
 		# Register VM to Vault
