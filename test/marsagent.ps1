@@ -46,4 +46,4 @@ param (
 		# Remove CredStuff
 		Remove-Item -Recurse -Force $CredsPath
 		# Start a manual backup
-		Get-OBPolicy | Start-OBBackup
+		#Get-OBPolicy | Start-OBBackup
