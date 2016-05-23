@@ -1,0 +1,41 @@
+{
+    "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "[variables('apiVersion')]",
+    "dependsOn": [
+      "[concat('Microsoft.Storage/storageAccounts/', variables('vm1storageAccountName'))]",
+      "[concat('Microsoft.Network/networkInterfaces/', variables('vm1nic1name'))]"
+    ],
+    "location": "[parameters('Location')]",
+    "name": "[parameters('vm1Name')]",
+    "properties": {
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": "false",
+          "storageUri": "[concat('http://', variables('vm1storageAccountName'), '.blob.core.windows.net')]"
+        }
+      },
+      "hardwareProfile": {
+        "vmSize": "[parameters('vmSize')]"
+      },
+      "networkProfile": {
+        "networkInterfaces": [{
+          "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('vm1nic1name'))]",
+          "properties": {
+            "primary": true
+          }
+        }]
+      },
+      "osProfile": "[variables('vm1osProfile')]",
+      "storageProfile": {
+        "imageReference": "[variables('imageReference')]",
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "name": "osDisk",
+          "vhd": {
+            "uri": "[concat('http://',variables('vm1storageAccountName'), '.blob.core.windows.net/vhds/', parameters('vm1Name'), '-os', '.vhd')]"
+          }
+        }
+      }
+    },
+  }
