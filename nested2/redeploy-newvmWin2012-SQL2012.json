@@ -36,7 +36,7 @@
     "imagePublisher": "MicrosoftSQLServer",
     "imageOffer": "SQL2012SP2-WS2012R2",
     "windowsOSVersion": "Standard",
-    "OSDiskName": "osdisk1"
+    "OSDiskName": "[concat(parameters('ServerName'),'-osdisk']"
   },
   "resources": [
     {
@@ -64,7 +64,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "osdisk",
+            "name": "[concat(parameters('ServerName'),'-osdisk']",
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },

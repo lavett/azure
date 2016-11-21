@@ -36,7 +36,7 @@
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
-    "OSDiskName": "osdisk1"
+    "OSDiskName": "[concat(parameters('ServerName'),'-osdisk']"
   },
   "resources": [
     {
@@ -64,7 +64,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "osdisk",
+            "name": "[concat(parameters('ServerName'),'-osdisk']",
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },
