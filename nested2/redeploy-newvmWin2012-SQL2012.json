@@ -32,7 +32,7 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
+    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftSQLServer",
     "imageOffer": "SQL2012SP2-WS2012R2",
     "windowsOSVersion": "Standard",

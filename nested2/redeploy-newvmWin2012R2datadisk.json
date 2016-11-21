@@ -32,7 +32,7 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('ServerName'),parameters('SADef'))]",
+    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",

@@ -84,12 +84,12 @@
     "SRVSubnet": "10.10.1.0/24",
     "PIPType": "Dynamic",
     "VMDef": "vm",
-    "SADef": "sa",
-    "NETDef": "net",
-    "SUBDef": "sub",
+    "SADef": "sa1",
+    "NETDef": "net1",
+    "SUBDef": "sub1",
     "NICDef": "nic",
     "PIPDef": "pip",
-    "NSGDef": "nsg"
+    "NSGDef": "nsg1"
   },
   "resources": [
     {
