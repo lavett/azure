@@ -2,6 +2,17 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "Location": {
+      "type": "String",
+      "defaultValue": "West Europe",
+      "allowedValues": [
+        "North Europe",
+        "West Europe"
+      ],
+      "metadata": {
+        "description": "Location of VM"
+      }
+    },
     "ServerName": {
       "type": "String",
       "metadata": {
@@ -62,7 +73,6 @@
     }
   },
   "variables": {
-    "Location": "[resourceGroup().location]",
     "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/nested2/",
     "TemplateBaseFile": "redeploy-new",
     "BaseName": "[resourceGroup().name]",
@@ -99,7 +109,7 @@
             "value": "[variables('SADef')]"
           },
           "Location": {
-            "value": "[variables('Location')]"
+            "value": "[parameters('Location')]"
           }
         }
       }
@@ -146,7 +156,7 @@
             "value": "[variables('SRVsubnet')]"
           },
           "Location": {
-            "value": "[variables('Location')]"
+            "value": "[parameters('Location')]"
           }
         }
       }
@@ -191,7 +201,7 @@
             "value": "[parameters('Password')]"
           },
           "Location": {
-            "value": "[variables('Location')]"
+            "value": "[parameters('Location')]"
           }
         }
       }
