@@ -35,7 +35,8 @@
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
-    "windowsOSVersion": "2012-R2-Datacenter"
+    "windowsOSVersion": "2012-R2-Datacenter",
+    "OSDiskName": "[concat(parameters('ServerName'),'-osdisk')]"
   },
   "resources": [
     {
@@ -63,7 +64,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(parameters('ServerName'),'-osdisk')]",
+            "name": "[variables('OSDiskName')]",
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },
