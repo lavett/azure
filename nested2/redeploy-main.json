@@ -121,7 +121,7 @@
             "value": "[variables('SRVsubnet')]"
           },
           "Location": {
-            "value": "[parameters('Location')]"
+            "value": "[variables('Location')]"
           }
         }
       }
@@ -165,7 +165,7 @@
             "value": "[parameters('Password')]"
           },
           "Location": {
-            "value": "[parameters('Location')]"
+            "value": "[variables('Location')]"
           }
         }
       }
