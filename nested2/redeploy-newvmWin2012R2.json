@@ -64,7 +64,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(parameters('ServerName'),'-osdisk']",
+            "name": "[concat(parameters('ServerName'),'-osdisk')]",
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },

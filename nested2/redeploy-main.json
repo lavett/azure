@@ -2,17 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "Location": {
-      "type": "String",
-      "defaultValue": "West Europe",
-      "allowedValues": [
-        "North Europe",
-        "West Europe"
-      ],
-      "metadata": {
-        "description": "Location of VM"
-      }
-    },
     "ServerName": {
       "type": "String",
       "metadata": {
@@ -33,16 +22,14 @@
     },
     "Image": {
       "type": "string",
-      "defaultValue": "Win2012",
+      "defaultValue": "Win2012R2",
       "allowedValues": [
         "Win7",
         "Win8",
         "Win8.1",
         "Win10",
         "Win2008R2",
-        "Win2012",
         "Win2012R2",
-        "WinDemo2012",
         "Win2016-Preview",
         "Win2012-SQL2012",
         "Win2012-SQL2014",
@@ -74,6 +61,7 @@
     }
   },
   "variables": {
+    "Location": "[resourceGroup().location]",
     "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/nested2/",
     "TemplateBaseFile": "redeploy-new",
     "BaseName": "[resourceGroup().name]",
