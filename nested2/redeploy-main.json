@@ -30,10 +30,8 @@
         "Win10",
         "Win2008R2",
         "Win2012R2",
-        "Win2016-Preview",
         "Win2012-SQL2012",
-        "Win2012-SQL2014",
-        "Win2012-SQL2016-Preview"
+        "Win2012-SQL2014"
       ],
       "metadata": {
         "description": "The Windows and if choosen SQL version for the VM. This will pick a fully patched image of this given Windows version"
