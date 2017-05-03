@@ -34,9 +34,9 @@
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftSQLServer",
-    "imageOffer": "SQL2016CTP2-WS2012R2",
+    "imageOffer": "SQL2012SP3-WS2012R2",
     "windowsOSVersion": "Enterprise",
-    "OSDiskName": "osdisk1"
+    "OSDiskName": "[concat(parameters('ServerName'),'-osdisk')]"
   },
   "resources": [
     {
@@ -64,7 +64,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "osdisk",
+            "name": "[concat(parameters('ServerName'),'-osdisk')]",
             "vhd": {
               "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
             },

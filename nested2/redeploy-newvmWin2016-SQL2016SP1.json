@@ -34,8 +34,8 @@
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftSQLServer",
-    "imageOffer": "SQL2012SP2-WS2012R2",
-    "windowsOSVersion": "Standard",
+    "imageOffer": "SQL2016SP1-WS2016",
+    "windowsOSVersion": "Enterprise",
     "OSDiskName": "[concat(parameters('ServerName'),'-osdisk')]"
   },
   "resources": [

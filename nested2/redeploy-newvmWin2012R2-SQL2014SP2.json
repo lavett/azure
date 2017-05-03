@@ -35,7 +35,7 @@
     "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftSQLServer",
     "imageOffer": "SQL2014SP2-WS2012R2",
-    "windowsOSVersion": "Standard",
+    "windowsOSVersion": "Enterprise",
     "OSDiskName": "[concat(parameters('ServerName'),'-osdisk')]"
   },
   "resources": [
