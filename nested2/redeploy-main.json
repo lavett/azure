@@ -58,7 +58,7 @@
     "Location": "[resourceGroup().location]",
     "TemplateBase": "https://raw.githubusercontent.com/lavett/azure/master/nested2/",
     "TemplateBaseFile": "redeploy-new",
-    "BaseName": "[replace((resourceGroup().name),'rg','')]",
+    "BaseName": "replace((resourceGroup().name), 'rg', '')",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
     "NETAddress": "10.10.0.0/16",
