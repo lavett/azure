@@ -80,7 +80,7 @@
     "ResourceGroupName": "[resourceGroup().name]",
     "BaseName": "[replace(variables('ResourceGroupName'), 'rg', '')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
-    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef')fi,'.json')]",
+    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
     "NETAddress": "10.10.0.0/16",
     "SRVSubnet": "10.10.1.0/24",
     "PIPType": "Dynamic",
