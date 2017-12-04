@@ -2,6 +2,15 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "imagePublisher": {
+      "type": "string"
+    },
+    "imageOffer": {
+      "type": "string"
+    },
+    "windowsOSVersion": {
+      "type": "string"
+    },
     "BaseName": {
       "type": "string"
     },
@@ -29,9 +38,6 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "imagePublisher": "MicrosoftWindowsServer",
-    "imageOffer": "WindowsServer",
-    "windowsOSVersion": "2012-R2-Datacenter",
     "OSDiskName": "[concat(parameters('ServerName'),'osdsk')]"
   },
   "resources": [
@@ -57,9 +63,9 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "[variables('imagePublisher')]",
-            "offer": "[variables('imageOffer')]",
-            "sku": "[variables('windowsOSVersion')]",
+            "publisher": "[parameters('imagePublisher')]",
+            "offer": "[parameters('imageOffer')]",
+            "sku": "[parameters('windowsOSVersion')]",
             "version": "latest"
           },
           "osDisk": {

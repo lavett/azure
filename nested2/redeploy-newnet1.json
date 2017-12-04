@@ -26,12 +26,6 @@
     "PIPType": {
       "type": "string"
     },
-    "NETAddress": {
-      "type": "string"
-    },
-    "SRVSubnet": {
-      "type": "string"
-    },
     "Location": {
       "type": "string"
     }
@@ -70,7 +64,7 @@
           {
             "name": "ipconfig1",
             "properties": {
-              "privateIPAllocationMethod": "Dynamic",
+              "privateIPAllocationMethod": "Static",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('PIPid'))]"
               },

@@ -20,20 +20,39 @@
         "description": "Password for the local Administrator Must be at least 8 characters and one have at least one capital letter, one number and one special character"
       }
     },
-    "Image": {
+    "imagePublisher": {
       "type": "string",
-      "defaultValue": "Win2012R2",
+      "defaultValue": "MicrosoftWindowsServer",
       "allowedValues": [
-        "Win7",
-        "Win8",
-        "Win8.1",
-        "Win10",
-        "Win2008R2",
-        "Win2012R2",
+        "MicrosoftWindowsSever",
+        "MicrosoftSQLServer"
+      ],
+      "metadata": {
+        "description": "Windows or SQL Publisher"
+      }
+    },
+    "imageOffer": {
+      "type": "string",
+      "defaultValue": "WindowsServer",
+      "allowedValues": [
+        "WindowsServer",
         "Win2012R2-SQL2012SP3",
         "Win2012R2-SQL2014SP2",
         "Win2012R2-SQL2016",
         "Win2016-SQL2016SP1"
+      ],
+      "metadata": {
+        "description": "WindowServer only or WindowsServer with SQL"
+      }
+    },
+    "windowsOSVersion": {
+      "type": "string",
+      "defaultValue": "2016-Datacenter",
+      "allowedValues": [
+        "2016-Datacenter",
+        "2012-R2-Datacenter",
+        "Standard",
+        "Enterprise"
       ],
       "metadata": {
         "description": "The Windows and if choosen SQL version for the VM. This will pick a fully patched image of this given Windows version"
@@ -61,12 +80,11 @@
     "ResourceGroupName": "[resourceGroup().name]",
     "BaseName": "[replace(variables('ResourceGroupName'), 'rg', '')]",
     "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
-    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),parameters('Image'),'.json')]",
+    "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef')fi,'.json')]",
     "NETAddress": "10.10.0.0/16",
     "SRVSubnet": "10.10.1.0/24",
     "PIPType": "Dynamic",
     "VMDef": "vm",
-    "SADef": "sa1",
     "NETDef": "net1",
     "SUBDef": "sub1",
     "NICDef": "nic1",
@@ -108,12 +126,6 @@
           },
           "PIPType": {
             "value": "[variables('PIPType')]"
-          },
-          "NETAddress": {
-            "value": "[variables('NETAddress')]"
-          },
-          "SRVsubnet": {
-            "value": "[variables('SRVsubnet')]"
           },
           "Location": {
             "value": "[variables('Location')]"
