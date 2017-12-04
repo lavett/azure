@@ -83,7 +83,7 @@
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
     "NETAddress": "10.10.0.0/16",
     "SRVSubnet": "10.10.1.0/24",
-    "PIPType": "Dynamic",
+    "PIPType": "Static",
     "VMDef": "vm",
     "NETDef": "net1",
     "SUBDef": "sub1",
