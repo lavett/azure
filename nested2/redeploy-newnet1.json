@@ -42,7 +42,7 @@
     "PIPid": "[concat(parameters('ServerName'),parameters('PIPDef'))]",
     "VNETid": "[resourceId('Microsoft.Network/virtualNetworks',variables('NETid'))]",
     "SUBRef": "[concat(variables('VNETid'),'/subnets/',variables('SUBid'))]",
-    "SUBid": "[concat(parameters('BaseName'),parameters('SUBDef'))]"
+    "SUBid": "[concat(parameters('BaseName'),parameters('NETDef'),parameters('SUBDef'))]"
   },
   "resources": [
     {
