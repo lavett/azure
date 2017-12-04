@@ -24,7 +24,7 @@
       "type": "string",
       "defaultValue": "MicrosoftWindowsServer",
       "allowedValues": [
-        "MicrosoftWindowsSever",
+        "MicrosoftWindowsServer",
         "MicrosoftSQLServer"
       ],
       "metadata": {
@@ -147,6 +147,15 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
+          "imagePublisher": {
+            "value": "[parameters('imagePublisher')]"
+          },
+          "imageOffer": {
+            "value": "[parameters('imageOffer')]"
+          },
+          "windowsOSVersion": {
+            "value": "[parameters('windowsOSVersion')]"
+          },
           "BaseName": {
             "value": "[variables('BaseName')]"
           },
