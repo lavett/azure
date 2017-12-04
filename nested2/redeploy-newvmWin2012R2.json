@@ -14,9 +14,6 @@
     "NICDef": {
       "type": "string"
     },
-    "SADef": {
-      "type": "string"
-    },
     "Size": {
       "type": "string"
     },
@@ -32,17 +29,16 @@
   },
   "variables": {
     "NICid": "[concat(parameters('ServerName'),parameters('NICDef'))]",
-    "SAid": "[concat(parameters('BaseName'),parameters('SADef'))]",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "windowsOSVersion": "2012-R2-Datacenter",
-    "OSDiskName": "[concat(parameters('ServerName'),'-osdisk')]"
+    "OSDiskName": "[concat(parameters('ServerName'),'osdsk')]"
   },
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('ServerName')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-04-30-preview",
       "location": "[parameters('Location')]",
       "tags": {
         "Documentation URL": "[parameters('Documentation URL')]"
@@ -54,7 +50,10 @@
         "osProfile": {
           "computername": "[parameters('ServerName')]",
           "adminUsername": "[parameters('Username')]",
-          "adminPassword": "[parameters('Password')]"
+          "adminPassword": "[parameters('Password')]",
+          "windowsConfiguration": {
+            "provisionVmAgent": "true"
+          }
         },
         "storageProfile": {
           "imageReference": {
@@ -65,8 +64,8 @@
           },
           "osDisk": {
             "name": "[variables('OSDiskName')]",
-            "vhd": {
-              "uri": "[concat('http://',variables('SAid'),'.blob.core.windows.net/','vhds','/',variables('OSDiskName'),'.vhd')]"
+            "managedDisk": {
+              "storageAccountType": "Standard_LRS"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -80,6 +79,43 @@
           ]
         }
       }
+    },
+    {
+      "name": "[concat(parameters('ServerName'),'antimalware')]",
+      "apiVersion": "2015-01-01",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "https://gallery.azure.com/artifact/20161101/microsoft.antimalware-windows-arm.1.0.0/Artifacts/MainTemplate.json"
+        },
+        "parameters": {
+          "vmName": {
+            "value": "[parameters('ServerName')]"
+          },
+          "location": {
+            "value": "[parameters('Location')]"
+          },
+          "RealtimeProtectionEnabled": {
+            "value": "true"
+          },
+          "ScheduledScanSettingsIsEnabled": {
+            "value": "true"
+          },
+          "ScheduledScanSettingsScanType": {
+            "value": "Quick"
+          },
+          "ScheduledScanSettingsDay": {
+            "value": "7"
+          },
+          "ScheduledScanSettingsTime": {
+            "value": "120"
+          }
+        }
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', parameters('ServerName'))]"
+      ]
     }
   ]
 }

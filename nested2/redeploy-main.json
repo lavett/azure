@@ -121,7 +121,7 @@
         }
       }
     },
-  {
+    {
       "apiVersion": "2015-01-01",
       "dependsOn": [
         "[concat('Microsoft.Resources/deployments/', 'newNET')]"
@@ -146,9 +146,6 @@
           },
           "NICDef": {
             "value": "[variables('NICDef')]"
-          },
-          "SADef": {
-            "value": "[variables('SADef')]"
           },
           "Size": {
             "value": "[parameters('Size')]"
