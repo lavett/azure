@@ -2,6 +2,18 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "Location": {
+      "type": "String",
+      "defaultValue": "NorthEurope",
+      "allowedValues": [
+        "NorthEurope",
+        "EastUS",
+        "AustraliaSouthEast"
+      ],
+      "metadata": {
+        "description": "Region of the server"
+      }
+    },
     "ServerName": {
       "type": "String",
       "metadata": {
@@ -79,17 +91,13 @@
     "TemplateBaseFile": "redeploy-new",
     "ResourceGroupName": "[resourceGroup().name]",
     "BaseName": "[replace(variables('ResourceGroupName'), 'rg', '')]",
-    "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('NETDef'),'.json')]",
+    "NETFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),'net',parameters('Location'),'.json')]",
     "VMFile": "[concat(variables('TemplateBase'),variables('TemplateBaseFile'),variables('VMDef'),'.json')]",
-    "NETAddress": "10.10.0.0/16",
-    "SRVSubnet": "10.10.1.0/24",
     "PIPType": "Static",
     "VMDef": "vm",
-    "NETDef": "net1",
     "SUBDef": "sub1",
     "NICDef": "nic1",
-    "PIPDef": "pip1",
-    "NSGDef": "nsg1"
+    "PIPDef": "pip1"
   },
   "resources": [
         {
@@ -109,12 +117,6 @@
           "ServerName": {
             "value": "[parameters('ServerName')]"
           },
-          "NSGDef": {
-            "value": "[variables('NSGDef')]"
-          },
-          "NETDef": {
-            "value": "[variables('NETDef')]"
-          },
           "NICDef": {
             "value": "[variables('NICDef')]"
           },
@@ -128,7 +130,7 @@
             "value": "[variables('PIPType')]"
           },
           "Location": {
-            "value": "[variables('Location')]"
+            "value": "[parameters('Location')]"
           }
         }
       }
@@ -178,7 +180,7 @@
             "value": "[parameters('Password')]"
           },
           "Location": {
-            "value": "[variables('Location')]"
+            "value": "[parameters('Location')]"
           }
         }
       }
