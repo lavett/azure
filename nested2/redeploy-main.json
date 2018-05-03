@@ -48,10 +48,10 @@
       "defaultValue": "WindowsServer",
       "allowedValues": [
         "WindowsServer",
-        "Win2012R2-SQL2012SP3",
-        "Win2012R2-SQL2014SP2",
-        "Win2012R2-SQL2016",
-        "Win2016-SQL2016SP1"
+        "SQL2012SP4-WS2012R2",
+        "SQL2014SP2-WS2012R2",
+        "SQL2016SP1-WS2012R2",
+        "SQL2016SP1-WS2016"
       ],
       "metadata": {
         "description": "WindowServer only or WindowsServer with SQL"
