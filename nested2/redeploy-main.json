@@ -73,6 +73,10 @@
     "Size": {
       "type": "string",
       "defaultValue": "Standard_DS1_v2",
+      "allowedValues": [
+        "Standard_DS1_v2",
+        "Standard_D2s_v3"
+      ],
       "metadata": {
         "description": "The size and type for the VM. For sizes see https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/"
       }
